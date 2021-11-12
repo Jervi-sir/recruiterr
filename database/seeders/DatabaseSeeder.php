@@ -11,6 +11,7 @@ use Database\Seeders\SkillSeeder;
 use Database\Seeders\ProfileSeeder;
 use Database\Seeders\ProjectSeeder;
 use Database\Seeders\FormationSeeder;
+use Database\Seeders\SpecialitySeeder;
 use Database\Seeders\StudentCodeSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $role = new RoleSeeder;
         $studentCode = new StudentCodeSeeder;
         $user = new UserSeeder;
-        $speciality = new specialitySeeder;
+        $speciality = new SpecialitySeeder;
         $profile = new ProfileSeeder;
         $skill = new SkillSeeder;
         $project = new ProjectSeeder;
