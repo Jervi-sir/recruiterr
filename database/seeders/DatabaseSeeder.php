@@ -11,6 +11,7 @@ use Database\Seeders\SkillSeeder;
 use Database\Seeders\ProfileSeeder;
 use Database\Seeders\ProjectSeeder;
 use Database\Seeders\FormationSeeder;
+use Database\Seeders\StudentCodeSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $role = new RoleSeeder;
+        $studentCode = new StudentCodeSeeder;
         $user = new UserSeeder;
         $speciality = new specialitySeeder;
         $profile = new ProfileSeeder;
@@ -32,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $formation = new FormationSeeder;
 
         $role->run();
+        $studentCode->run();
         $user->run();
         $speciality->run();
         $profile->run();
