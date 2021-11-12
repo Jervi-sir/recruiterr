@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', Rules\Password::defaults()],
-            'code' => ['required', 'string', 'max:255', 'exists:studentcodes'] 
+            //'code' => ['required', 'string', 'max:255', 'exists:studentcodes'] 
         ]);
 
         $user = User::create([
@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => Role::where('role_name', 'student')->first()->id,
-            'code' => $request->code,
+            //'code' => $request->code,
         ]);
 
         $profile = new Profile();
