@@ -102,9 +102,6 @@
                                         <input type="password" name="password" class="form-control" placeholder="Password">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="code" class="form-control" placeholder="Student Code">
-                                    </div>
-                                    <div class="form-group">
                                         <div class="form-check mb-3">
                                             <input type="checkbox" class="form-check-input" id="validationFormCheck1">
                                             <label class="form-check-label" for="validationFormCheck1">I accept the <a href="#">Terms and Conditions</a></label>
