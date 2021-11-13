@@ -379,7 +379,12 @@
                                         <li><a href="#">Settings</a></li>
                                         <li><a href="#">Terms and Conditions</a></li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="login.html">Log Out</a></li>
+                                        <li>
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
+                                                <button type="submit">{{ __('Log Out') }}</button>
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
