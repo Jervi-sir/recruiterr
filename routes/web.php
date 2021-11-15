@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\StudentController;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +20,12 @@ Route::middleware(['auth', 'role'])->group(function() {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('getin');
+    //return view('welcome');
 });
+
+Route::get('/success', [StudentController::class, 'success'])->name('success');
+Route::post('join', [StudentController::class, 'join'])->name('join');
 
 Route::get('/dashboard', function () {
     return view('home');
