@@ -24,6 +24,10 @@ Route::get('/', function () {
 Route::get('/success', [StudentController::class, 'success'])->name('success');
 Route::post('join', [StudentController::class, 'join'])->name('join');
 
+Route::any('/{any}', function () {
+    return view('getin');
+
+});
 /*
 Route::middleware(['auth', 'role'])->group(function() {
 
