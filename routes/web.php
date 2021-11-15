@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth', 'role'])->group(function() {
-
-});
 
 Route::get('/', function () {
     return view('getin');
@@ -27,8 +24,14 @@ Route::get('/', function () {
 Route::get('/success', [StudentController::class, 'success'])->name('success');
 Route::post('join', [StudentController::class, 'join'])->name('join');
 
+/*
+Route::middleware(['auth', 'role'])->group(function() {
+
+});
+
 Route::get('/dashboard', function () {
     return view('home');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+*/
