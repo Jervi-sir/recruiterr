@@ -58,10 +58,11 @@
                                         <input name="email" value="{{ old('email') }}" type="email" class="form-control {{ $errors->any() != NULL ? ' input-error' : '' }}" placeholder="E-mail" required/>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
+                                                
                                                 <ul>
-                                                    @foreach ($errors->all() as $error)
-                                                        <li>{{ $error }}</li>
-                                                    @endforeach
+                                                    
+                                                        <li>This email address is already being used</li>
+                                                    
                                                 </ul>
                                             </div>
                                         @endif
