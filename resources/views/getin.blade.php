@@ -47,7 +47,7 @@
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <form class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel" action="{{ route('join') }}" method="POST">
+                            <form class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel" action="{{ route('register') }}" method="POST">
                                 @csrf
                                 <h3 class="item-title">Sign Into <span>our community</span></h3>
                                 <div name="contact">
@@ -58,11 +58,8 @@
                                         <input name="email" value="{{ old('email') }}" type="email" class="form-control {{ $errors->any() != NULL ? ' input-error' : '' }}" placeholder="E-mail" required/>
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
-                                                
                                                 <ul>
-                                                    
-                                                        <li>This email address is already being used</li>
-                                                    
+                                                    <li>This email address is already being used</li>
                                                 </ul>
                                             </div>
                                         @endif
@@ -70,6 +67,9 @@
                                     <div class="form-group">
                                         <input name="password"  id="password" type="password" class="form-control" placeholder="Password" required/>
                                         <button onclick="toggle(this)" type="button" class="toggle-psswd icofont-eye-alt"></button>
+                                    </div>
+                                    <div class="form-group">
+                                        <input name="phone" value="{{ old('phone') }}" type="text" class="form-control" placeholder="Your Phone Number" required/>
                                     </div>
                                     <div class="form-group">
                                         <input name="code" value="{{ old('code') }}" type="text" class="form-control" placeholder="Your Student Code" required/>
@@ -130,12 +130,12 @@
             color: brown;
             font-size: 13px;
         }
-        
+
         .input-error {
             color: brown !important;
             border-bottom: 1px solid brown !important;
         }
-        
+
         .toggle-psswd {
             cursor: pointer;
             position: absolute;
@@ -144,19 +144,19 @@
             background-color: transparent;
             border: none;
         }
-        
+
         .about-us {
             max-width: 21rem;
             display: inline-block;
             padding: 1rem 0;
         }
-        
+
         .images {
             display: flex;
             align-items: center;
             flex-direction: column;
         }
-        
+
         .images img {
             width: 50%;
         }
@@ -166,7 +166,7 @@
             margin-bottom: 1rem;
             text-align: center;
         }
-        
+
         footer {
             font-family: inherit;
             position: fixed;
@@ -176,27 +176,27 @@
             text-align: center;
             color: black;
         }
-        
+
         footer a {
             color: black;
             opacity: 0.5;
         }
-        
+
         .social {
             display: flex;
             justify-content: space-around;
         }
-        
+
         .social li {
             font-size: 2rem;
         }
-        
+
         @media only screen and (max-width: 575px) {
             .login-page-wrap .item-logo a {
                 width: 100%;
             }
         }
-        
+
     </style>
     <script>
         function toggle(mode) {

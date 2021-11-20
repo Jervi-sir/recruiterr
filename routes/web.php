@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\StudentController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +24,21 @@ Route::get('/', function () {
 
 Route::get('/success', [StudentController::class, 'success'])->name('success');
 Route::post('join', [StudentController::class, 'join'])->name('join');
+Route::post('sendOtp', [StudentController::class, 'sendOtp'])->name('sendOtp');
+Route::post('verifyOtp', [StudentController::class, 'verifyOtp'])->name('verifyOtp');
 
-Route::any('/{any}', function () {
-    return view('getin');
+require __DIR__.'/auth.php';
 
-});
 /*
 Route::middleware(['auth', 'role'])->group(function() {
-
 });
 
 Route::get('/dashboard', function () {
     return view('home');
 })->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
 */
+
+Route::any('/{any}', function () {
+    return view('getin');
+
+});
