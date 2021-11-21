@@ -252,12 +252,15 @@
                 font-size: 2rem;
             }
             
-            @media only screen and (max-width: 575px)
-                .login-page-wrap .login-content {
+            @media only screen and (max-width: 575px) {
+             .login-page-wrap .login-content {
                     padding: 50px 15px 0;
                     width: 100%;
                     height: 100vh;
                 }
+            
+            }
+               
         </style>
         <script>
             function toggle(mode) {
