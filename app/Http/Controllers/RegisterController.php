@@ -52,6 +52,7 @@ class RegisterController extends Controller
 
         $profile = new Profile();
         $profile->user_id = $user->id;
+        $profile->family_name = $request->name;
         $profile->speciality_id = $request->field;
         $profile->save();
 
