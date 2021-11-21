@@ -35,7 +35,11 @@ class RegisterController extends Controller
             }
         }
         else {
-            return back()->withInput()->withErrors(['phone' => 'Phone number is wrong']);
+            if(strlen($phone) == 10) {
+                continue;
+            } else {
+                return back()->withInput()->withErrors(['phone' => 'Phone number is wrong']);
+            }
         }
 
         $user = User::create([
