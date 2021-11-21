@@ -14,10 +14,8 @@ class redirectSecureHttp
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next){
-        if (!$request->secure()) {
-            return redirect()->secure($request->path());
-        }
+    public function handle(Request $request, Closure $next)
+    {
         return $next($request);
     }
 }
