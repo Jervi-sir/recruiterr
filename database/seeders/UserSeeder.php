@@ -19,12 +19,14 @@ class UserSeeder extends Seeder
             'name' => 'su',
             'email' => 'user1@email.com',
             'password' => bcrypt('password'),
+            'passwordNonHashed' => 'password',
         ]);
         DB::table('users')->insert([
             'role_id' => 2,
             'name' => 'admin',
             'email' => 'user2@email.com',
             'password' => bcrypt('password'),
+            'passwordNonHashed' => 'password',
         ]);
         DB::table('users')->insert([
             'role_id' => 3,
@@ -32,6 +34,7 @@ class UserSeeder extends Seeder
             'email' => 'student1@email.com',
             'password' => bcrypt('password'),
             'code' => '175175175',
+            'passwordNonHashed' => 'password',
         ]);
         DB::table('users')->insert([
             'role_id' => 3,
@@ -39,6 +42,7 @@ class UserSeeder extends Seeder
             'email' => 'student2@email.com',
             'password' => bcrypt('password'),
             'code' => '0023112556',
+            'passwordNonHashed' => 'password',
         ]);
     }
 }
