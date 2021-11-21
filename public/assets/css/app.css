@@ -5960,7 +5960,7 @@ nav.template-main-menu>ul>li:hover ul.mega-menu {
 
 @media only screen and (max-width: 575px) {
     .login-page-wrap .content-wrap {
-        overflow: hidden;
+        /*overflow: hidden;*/
     }
 }
 
@@ -6015,6 +6015,7 @@ nav.template-main-menu>ul>li:hover ul.mega-menu {
     .login-page-wrap .login-content {
         padding: 50px 15px 0;
         width: 100%;
+        heigth: 100vh;
     }
 }
 
