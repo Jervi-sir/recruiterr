@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('code')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('passwordNonHashed');
             $table->integer('isVerified')->default(0);
 
             $table->rememberToken();
