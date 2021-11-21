@@ -46,9 +46,8 @@
                     <div class="login-form-wrap success-msg ">
                         <div class="tab-content">
                             <div class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel">
-                                <h3 class="item-title">Thank you for joining us !</h3>
-                                <span>You have registered successfully.</span>
-
+                                <h3 class="item-title">You have registered successfully !</h3>
+                                <span>Vous êtes deja inscrit avec succès</span>
                                 <br>
                                 <a id="back-link" href="#">← Back to our site</a>
                             </div>

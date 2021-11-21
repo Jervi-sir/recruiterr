@@ -144,7 +144,7 @@
 <script>
     var formObj = document.getElementsByTagName('form')[0];
     var actionUrl = formObj.getAttribute('action');
-    
+
     if(window.location.href.includes("http:")) {
         document.getElementsByTagName('form')[0].setAttribute('action', 'http://me-uat.com/success');
     }
