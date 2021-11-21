@@ -43,6 +43,7 @@
                     <div class="item-logo success-logo">
                         <a href="#"><img src="media/banner/logo-words.png" alt="logo"></a>
                     </div>
+                    @guest
                     <div class="login-form-wrap success-msg ">
                         <div class="tab-content">
                             <div class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel">
@@ -53,6 +54,47 @@
                             </div>
                         </div>
                     </div>
+                    @endguest
+
+                    @auth
+                    <div id="app"  class="login-form-wrap success-msg" >
+                        <div class="tab-content">
+                            <div class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel">
+                                <h3 class="item-title">Phone Verification!</h3>
+                                <span>Welcome {{ Auth::user()->name }}.</span>
+                                <br>
+                                <span>Please enter your phone number.</span>
+                                <br>
+                                <div class="phone">
+                                    <label for="">
+                                        <img src="../media/algeria_flag.svg" alt="" width="20px">
+                                        <span>+213</span>
+                                    </label>
+                                    <input name="phone" value="{{ old('phone') }}" type="text" minlength="8" maxlength="10" v-model="phone" class="form-control {{ $errors->any() != NULL ? ' input-error' : '' }}" placeholder="Phone number"  @keypress="isNumber($event)"/>
+                                </div>
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        <li>Phone number not correct</li>
+                                    </ul>
+                                </div>
+                                @endif
+                                <div class="actions">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button id="back-link" type="submit">← Log Out</button>
+                                    </form>
+                                    <form action="{{ route('sms.send') }}" method="POST">
+                                        @csrf
+                                        <input type="text" value="{{ old('phone') }}" name="phone" hidden minlength="8" maxlength="10" v-model="phone">
+                                        <button type="submit" :disabled="phone.length  < 10" >Receive Code</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endauth
+
                     <footer>
                         Copyright <a href="https://gacem.netlify.com" target="_blank">Jervi</a> from <a href="https://www.instagram.com/2kingswebsites/" target="_blank">2Kw.</a>
                     </footer>

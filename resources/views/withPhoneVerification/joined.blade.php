@@ -46,10 +46,15 @@
                     <div class="login-form-wrap success-msg ">
                         <div class="tab-content">
                             <div class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel">
-                                <h3 class="item-title">Try to register !</h3>
-                                <span>Your havent registered yet.</span>
+                                <h3 class="item-title">Thank you for registering !</h3>
                                 <br>
-                                <a id="back-link" href="#">← Back to our site</a>
+                                <!--<a id="back-link" href="#">← Back to our site</a>-->
+                                <div class="actions">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button id="back-link" type="submit">← Log Out</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="">
 
-
-<!-- Mirrored from radiustheme.com/demo/html/cirkle/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Nov 2021 16:36:10 GMT -->
-
 <head>
     <!-- Meta Data -->
     <meta charset="UTF-8">
@@ -43,16 +40,36 @@
                     <div class="item-logo success-logo">
                         <a href="#"><img src="media/banner/logo-words.png" alt="logo"></a>
                     </div>
-                    <div class="login-form-wrap success-msg ">
+
+                    @auth
+                    <div id="app"  class="login-form-wrap success-msg" >
                         <div class="tab-content">
                             <div class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel">
-                                <h3 class="item-title">Try to register !</h3>
-                                <span>Your havent registered yet.</span>
+                                <h3 class="item-title">Last step!</h3>
+                                <span>Your phone number: {{ $phone }}</span>
                                 <br>
-                                <a id="back-link" href="#">← Back to our site</a>
+                                <form method="POST" action="{{ route('sms.verify') }}">
+                                    @csrf
+                                    <div class="phone">
+                                        <input name="code" value="{{ old('code') }}" type="text" minlength="4" maxlength="6" v-model="phone" class="form-control {{ $errors->any() != NULL ? ' input-error' : '' }}" placeholder="Enter received code" >
+                                    </div>
+                                    @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            <li>Code incorrect</li>
+                                        </ul>
+                                    </div>
+                                    @endif
+                                    <div class="actions">
+                                        <button type="submit" >Verify</button>
+
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                    @endauth
+
                     <footer>
                         Copyright <a href="https://gacem.netlify.com" target="_blank">Jervi</a> from <a href="https://www.instagram.com/2kingswebsites/" target="_blank">2Kw.</a>
                     </footer>
@@ -147,6 +164,7 @@
             .actions {
                 margin-top: 2rem;
                 display: flex;
+                flex-direction: row-reverse;
                 justify-content: space-between;
             }
 

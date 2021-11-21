@@ -46,50 +46,27 @@
                                 <a class="nav-link" data-toggle="tab" href="#registration-tab" role="tab" aria-selected="false"><i class="icofont-info-circle"></i> About us</a>
                             </li>
                         </ul>
-                        <div class="tab-content" id="app">
+                        <div class="tab-content">
                             <form class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel" action="{{ route('register') }}" method="POST">
                                 @csrf
                                 <h3 class="item-title">Sign Into <span>our community</span></h3>
                                 <div name="contact">
                                     <div class="form-group">
-                                        <input name="name" value="{{ old('name') }}" type="text" class="form-control "  placeholder="Your Name" required/>
+                                        <input name="name" value="{{ old('name') }}" type="text" class="form-control" placeholder="Your Name" required/>
                                     </div>
                                     <div class="form-group">
-                                        <input name="email" value="{{ old('email') }}" type="email" class="form-control {{ $errors->has('email') != NULL ? ' input-error' : '' }}" placeholder="E-mail" required/>
-                                        @if ($errors->has('email'))
+                                        <input name="email" value="{{ old('email') }}" type="email" class="form-control {{ $errors->any() != NULL ? ' input-error' : '' }}" placeholder="E-mail" required/>
+                                        @if ($errors->any())
                                             <div class="alert alert-danger">
                                                 <ul>
-                                                    <li>{{$errors->first('email')}}</li>
+                                                    <li>This email address is already being used</li>
                                                 </ul>
                                             </div>
                                         @endif
                                     </div>
                                     <div class="form-group">
-                                        <input name="password" id="password" type="password" class="form-control {{ $errors->has('password') != NULL ? ' input-error' : '' }}" placeholder="Password" required/>
+                                        <input name="password"  id="password" type="password" class="form-control" placeholder="Password" required/>
                                         <button onclick="toggle(this)" type="button" class="toggle-psswd icofont-eye-alt"></button>
-                                    </div>
-                                    @if ($errors->has('password'))
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                <li>{{$errors->first('password')}}</li>
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    <div class="form-group">
-                                        <div class="phone">
-                                            <label for="">
-                                                <img src="../media/algeria_flag.svg" alt="" width="20px">
-                                                <span>+213</span>
-                                            </label>
-                                            <input name="phone" v-model="phone"  value="{{ old('phone') }}" type="text" minlength="8" maxlength="10" class="form-control {{ $errors->has('phone') != NULL ? ' input-error' : '' }}" placeholder="Phone number" @keypress="isNumber($event)" required/>
-                                        </div>
-                                        @if ($errors->has('phone'))
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    <li>{{$errors->first('phone')}}</li>
-                                                </ul>
-                                            </div>
-                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <input name="code" value="{{ old('code') }}" type="text" class="form-control" placeholder="Your Student Code" required/>
@@ -144,57 +121,8 @@
     <!-- Site Scripts -->
     <script src="assets/js/app.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                phone: '',
-            },
-            methods: {
-                isNumber: function(event) {
-                    event = (event) ? event : window.event;
-                    var charCode = (event.which) ? event.which : event.keyCode;
-                    if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
-                        event.preventDefault();;
-                    } else {
-                        return true;
-                    }
-
-                }
-            }
-        })
-
-    </script>
-
     <!-- Last minute fixes -->
     <style>
-        .phone {
-                margin-top: 0.5rem;
-                display: flex;
-                align-content: center;
-                align-items: center;
-                gap: 1rem;
-                border: none;
-                border-radius: 0;
-                padding: 5px 0;
-                padding: 0;
-                border-bottom: 1px solid #eaeaea;
-            }
-
-            .phone label {
-                display: flex;
-                align-content: center;
-                align-items: center;
-                margin: 0;
-
-            }
-
-            .phone input {
-                border: none;
-                outline: none;
-            }
         .error {
             color: brown;
             font-size: 13px;
