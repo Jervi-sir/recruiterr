@@ -36,7 +36,7 @@ class RegisterController extends Controller
         }
         else {
             if(strlen($phone) == 10) {
-                continue;
+
             } else {
                 return back()->withInput()->withErrors(['phone' => 'Phone number is wrong']);
             }
