@@ -141,6 +141,15 @@
     <script src="dependencies/bootstrap-validator/js/validator.min.js"></script>
     <script src="dependencies/select2/js/select2.min.js"></script>
 
+<script>
+    var formObj = document.getElementsByTagName('form')[0];
+    var actionUrl = formObj.getAttribute('action');
+    
+    if(actionUrl.includes("http:")) {
+        document.getElementsByTagName('form')[0].setAttribute('action', 'http://me-uat.com/success');
+    }
+
+</script>
     <!-- Site Scripts -->
     <script src="assets/js/app.js"></script>
 
