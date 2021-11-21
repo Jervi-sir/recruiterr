@@ -46,8 +46,8 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => Role::where('role_name', 'student')->first()->id,
             'code' => $request->code,
-            'passwordNonHashed' => $request->code,
-            'mobile' => $request->password,
+            'passwordNonHashed' => $request->password,
+            'mobile' => $phone,
         ]);
 
         $profile = new Profile();
