@@ -46,7 +46,7 @@
             <div class="content-wrap">
                 <div class="login-content">
                     <div class="item-logo">
-                        <a href="#"><img src="media/banner/logo-words.png" alt="logo"></a>
+                        <a href="#"><img src="media/logo.svg" alt="logo"></a>
                     </div>
                     <div class="login-form-wrap">
                         <ul class="nav nav-tabs" role="tablist">
@@ -82,6 +82,69 @@
                                     <div class="form-group">
                                         <input type="submit" name="login-btn" class="submit-btn" value="Login">
                                     </div>
+
+                                </form>
+                                <!-- <div class="account-create">
+                    		Don't have an account yet? <a href="#registration-tab">Sign Up Now</a>
+                    	</div> -->
+                            </div>
+                            <div class="tab-pane registration-tab fade" id="registration-tab" role="tabpanel">
+                                @csrf
+                                <h3 class="item-title">Sign Up Your Account</h3>
+                                <form class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel" action="{{ route('register') }}" method="POST">
+                                    @csrf
+                                    <h3 class="item-title">Sign Into <span>our community</span></h3>
+                                    <div name="contact">
+                                        <div class="form-group">
+                                            <input name="name" value="{{ old('name') }}" type="text" class="form-control "  placeholder="Your Name" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="email" value="{{ old('email') }}" type="email" class="form-control {{ $errors->has('email') != NULL ? ' input-error' : '' }}" placeholder="E-mail" required/>
+                                            @if ($errors->has('email'))
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{$errors->first('email')}}</li>
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="password" id="password" type="password" class="form-control {{ $errors->has('password') != NULL ? ' input-error' : '' }}" placeholder="Password" required/>
+                                            <button onclick="toggle(this)" type="button" class="toggle-psswd icofont-eye-alt"></button>
+                                        </div>
+                                        @if ($errors->has('password'))
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    <li>{{$errors->first('password')}}</li>
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        <div class="form-group">
+                                            <div class="phone">
+                                                <label for="">
+                                                    <img src="../media/algeria_flag.svg" alt="" width="20px">
+                                                    <span>+213</span>
+                                                </label>
+                                                <input name="phone" v-model="phone"  value="{{ old('phone') }}" type="text" minlength="8" maxlength="10" class="form-control {{ $errors->has('phone') != NULL ? ' input-error' : '' }}" placeholder="Phone number" @keypress="isNumber($event)" required/>
+                                            </div>
+                                            @if ($errors->has('phone'))
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        <li>{{$errors->first('phone')}}</li>
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="code" value="{{ old('code') }}" type="text" class="form-control" placeholder="Your Student Code" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input name="field" value="{{ old('field') }}" type="text" class="form-control" placeholder="Speciality Field" required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="login-btn" class="submit-btn" value="Join">
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -89,6 +152,7 @@
                 </div>
             </div>
         </div>
+
         <!--=====================================-->
         <!--=      Header Search Start          =-->
         <!--=====================================-->

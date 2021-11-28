@@ -28,7 +28,6 @@ class RegisterController extends Controller
             //'code' => ['required', 'string', 'max:255', 'exists:studentcodes']
         ]);
 
-
         $phone = $request->phone;
 
         if(substr($phone, 0, 1) != '0' ) {      //if doesnt start with 0

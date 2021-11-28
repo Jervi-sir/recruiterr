@@ -3,10 +3,10 @@ Template Name: Cirkle Social Media Community HTML Template
 Template URL: http://www.radiustheme.com/demo/html/cirkle/
 Description: Social Media and Community HTML Template
 Author: RadiusTheme
-Author URL: http://www.radiustheme.com 
+Author URL: http://www.radiustheme.com
 Version: 1.0.0
 
-===================   
+===================
 CSS INDEX
 ===================
 1. Typography
@@ -46,12 +46,12 @@ CSS INDEX
 	6.5 Product
 	6.6 Search
 	6.7 User Activity
-	6.8 Widget 
+	6.8 Widget
 --------------------------------------------*/
 
 
 /*=======================================================================
-1. Typography 
+1. Typography
 =========================================================================*/
 
 body {
@@ -6206,7 +6206,7 @@ nav.template-main-menu>ul>li:hover ul.mega-menu {
 
 .login-page-wrap .tab-content .form-group {
     /* input::-webkit-calendar-picker-indicator {
-			 	
+
 			 	&:before {
 			 		color: red;
 			 	}
@@ -7994,7 +7994,8 @@ nav.template-main-menu>ul>li:hover ul.mega-menu {
 }
 
 .post-view .post-footer>ul>li:last-child {
-    margin-right: 0;
+    margin: 0;
+    margin-left: auto;
 }
 
 .post-view .post-footer>ul>li>a {
@@ -8028,7 +8029,8 @@ nav.template-main-menu>ul>li:hover ul.mega-menu {
 }
 
 .post-view .post-footer>ul>li>a:hover {
-    color: #5edfff;
+    /*color: #5edfff;*/
+    color: whitesmoke;
 }
 
 .post-view .post-footer>ul>li>a:hover i {

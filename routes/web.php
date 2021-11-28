@@ -2,11 +2,13 @@
 
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SmsController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,12 +26,13 @@ Route::get('/', function () {
     return view('getin');
     //return view('welcome');
 });
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('join', [SmsController::class, 'join'])->name('join');
 
-Route::post('/success', [RegisterController::class, 'store'])->name('register');
+//Route::post('/success', [RegisterController::class, 'store'])->name('register');
 
-/*
 require __DIR__.'/auth.php';
+/*
 
 Route::middleware(['auth', 'role'])->group(function() {
 });
@@ -54,6 +57,5 @@ Route::get('joined', [SmsController::class, 'joined']);
 */
 
 Route::any('/{any}', function () {
-    return view('getin');
-
+    return back();
 });
