@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultstringLength(191);
         if ($request->secure()) {
-            URL::forceScheme('https');
+            return 1;
         }
     }
 }
