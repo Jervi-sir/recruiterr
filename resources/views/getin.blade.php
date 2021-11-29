@@ -20,7 +20,7 @@
 
     <!-- Site Stylesheet -->
     <link rel="stylesheet" href="assets/css/app.css">
-
+    @include('redirectJs')
 </head>
 
 <body class="sticky-header">

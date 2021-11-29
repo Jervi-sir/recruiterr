@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="assets/css/app.css">
 
     <!-- Google Web Fonts -->
+    @include('redirectJs')
 
 </head>
 
