@@ -80,6 +80,13 @@
                                             <label class="form-check-label" for="validationFormCheck2">Keep me as signed in</a></label>
                                         </div>
                                     </div>
+                                    @if ($errors->has('email'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                <li>{{$errors->first('email')}}</li>
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="form-group">
                                         <input type="submit" name="login-btn" class="submit-btn" value="Login">
                                     </div>
