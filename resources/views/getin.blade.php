@@ -8,6 +8,7 @@
     <title>Maison d'entrepreneuriat</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @include('redirectJs')
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="media/logo.png">
     <link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css">
@@ -20,7 +21,6 @@
 
     <!-- Site Stylesheet -->
     <link rel="stylesheet" href="assets/css/app.css">
-    @include('redirectJs')
 </head>
 
 <body class="sticky-header">

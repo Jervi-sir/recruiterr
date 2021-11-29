@@ -11,6 +11,7 @@
     <title>Cirkle | Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    @include('redirectJs')
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="media/favicon.png">
     <link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css">
@@ -26,7 +27,6 @@
 
     <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
-    @include('redirectJs')
 
 </head>
 
