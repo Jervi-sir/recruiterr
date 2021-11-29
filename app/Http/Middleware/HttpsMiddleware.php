@@ -16,10 +16,8 @@ class HttpsMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(env('APP_ENV') === "production") {
-            if (!$request->secure()) {
-                return redirect()->secure($request->path());
-            }
+        if (!$request->secure()) {
+            return redirect()->secure($request->path());
         }
         return $next($request);
     }
