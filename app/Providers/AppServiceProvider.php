@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(Request $request)
     {
         Schema::defaultstringLength(191);
-        if ($request->secure()) {
-            return 1;
+        if (!$request->secure()) {
+            URL::forceScheme('https');
         }
     }
 }
