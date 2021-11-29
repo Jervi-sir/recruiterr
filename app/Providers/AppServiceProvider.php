@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Request;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -24,8 +25,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Request $request)
     {
         Schema::defaultstringLength(191);
+        if ($request->secure()) {
+            URL::forceScheme('https');
+        }
     }
 }
