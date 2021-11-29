@@ -212,7 +212,4 @@
         }
     </style>
 </body>
-
-
-<!-- Mirrored from radiustheme.com/demo/html/cirkle/newsfeed.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Nov 2021 16:35:41 GMT -->
 </html>
