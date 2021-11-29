@@ -210,6 +210,20 @@
         .slide-button {
             margin-right: auto;
         }
+
+        @media (max-width: 991px) {
+            .col-lg-65 {
+                flex: 0 0 100%;
+                width: 100%;
+            }
+            .footer-dashboard .main-footer {
+                text-align: center
+            }
+            .justify-content-lg-center {
+                justify-content: center;
+            }
+        }
+
     </style>
 </body>
 </html>

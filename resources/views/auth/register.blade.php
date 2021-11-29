@@ -58,7 +58,7 @@
                                 <a class="nav-link active" href="{{ route('register') }}" aria-selected="false"><i class="icofont-download"></i> Registration</a>
                             </li>
                         </ul>
-                        <div class="tab-content">
+                        <div class="tab-content" id="app">
                             <div class="tab-pane registration-tab fade show active" id="registration-tab" role="tabpanel">
                                 <h3 class="item-title">Sign Up Your Account</h3>
                                 <form class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel" action="{{ route('register') }}" method="POST">
@@ -118,22 +118,13 @@
                                 </form>
                             </div>
                         </div>
+
                     </div>
+                    <footer>
+                        Copyright <a href="https://gacem.netlify.com" target="_blank">Jervi</a> from <a href="https://www.instagram.com/2kingswebsites/" target="_blank">2Kw.</a>
+                    </footer>
                 </div>
             </div>
-        </div>
-
-        <!--=====================================-->
-        <!--=      Header Search Start          =-->
-        <!--=====================================-->
-        <div id="header-search" class="header-search">
-            <button type="button" class="close">×</button>
-            <form class="header-search-form">
-                <input type="search" value="" placeholder="Search here..." />
-                <button type="submit" class="search-btn">
-                    <i class="flaticon-search"></i>
-                </button>
-            </form>
         </div>
     </div>
     <!-- Jquery Js -->
@@ -316,7 +307,5 @@
     </script>
 
 </body>
-
-<!-- Mirrored from radiustheme.com/demo/html/cirkle/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Nov 2021 16:36:11 GMT -->
 
 </html>

@@ -58,7 +58,7 @@
                                 <a class="nav-link " href="{{ route('register') }}"  aria-selected="false"><i class="icofont-download"></i> Registration</a>
                             </li>
                         </ul>
-                        <div class="tab-content">
+                        <div class="tab-content" id="app">
                             <div class="tab-pane login-tab fade show active" id="login-tab" role="tabpanel">
                                 <h3 class="item-title">Sign Into <span>Your Account</span></h3>
                                 <form method="POST" action="{{ route('login') }}">
@@ -94,21 +94,13 @@
                             </div>
                         </div>
                     </div>
+                    <footer>
+                        Copyright <a href="https://gacem.netlify.com" target="_blank">Jervi</a> from <a href="https://www.instagram.com/2kingswebsites/" target="_blank">2Kw.</a>
+                    </footer>
                 </div>
             </div>
         </div>
-        <!--=====================================-->
-        <!--=      Header Search Start          =-->
-        <!--=====================================-->
-        <div id="header-search" class="header-search">
-            <button type="button" class="close">×</button>
-            <form class="header-search-form">
-                <input type="search" value="" placeholder="Search here..." />
-                <button type="submit" class="search-btn">
-                    <i class="flaticon-search"></i>
-                </button>
-            </form>
-        </div>
+
     </div>
     <!-- Jquery Js -->
     <script src="dependencies/jquery/js/jquery.min.js"></script>
