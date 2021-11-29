@@ -17,6 +17,9 @@ class HttpsMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        if ($request->secure()) {
+            URL::forceScheme('https');
+        }
         return $next($request);
     }
 }
