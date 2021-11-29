@@ -16,7 +16,9 @@ class HttpsMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-
+        if (!$request->secure()) {
+            return redirect()->secure($request->path());
+        }
         return $next($request);
     }
 }
