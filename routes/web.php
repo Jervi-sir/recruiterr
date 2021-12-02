@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
@@ -29,13 +30,16 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('join', [SmsController::class, 'join'])->name('join');
 
+Route::middleware(['auth', 'admin'])->group(function() {
+    Route::get('/admin/students', [AdminController::class, 'students'])->name('students');
+});
+
 //Route::post('/success', [RegisterController::class, 'store'])->name('register');
 
 require __DIR__.'/auth.php';
 /*
 
-Route::middleware(['auth', 'role'])->group(function() {
-});
+
 
 Route::get('/dashboard', function () {
     return view('home');
