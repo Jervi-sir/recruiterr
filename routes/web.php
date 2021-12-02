@@ -31,7 +31,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('join', [SmsController::class, 'join'])->name('join');
 
 Route::middleware(['auth', 'admin'])->group(function() {
-    Route::get('/admin/students', [AdminController::class, 'students'])->name('students');
+    Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
 });
 
 //Route::post('/success', [RegisterController::class, 'store'])->name('register');
