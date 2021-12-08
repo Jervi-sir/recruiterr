@@ -46,6 +46,7 @@
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text">welcome, <span class="text-black fw-bold">{{ Auth()->user()->name }}</span></h1>
             <h3 class="welcome-sub-text">List of students that registered </h3>
+            <a href="{{ route('badge.add') }}">add badge</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -381,7 +382,7 @@
             <div class="col-lg-11 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Student table</h4>
+                  <h4 class="card-title">Badges table</h4>
                   <p class="card-description">
 
                   </p>
@@ -389,18 +390,14 @@
                     <table class="table table-hover">
                       <thead>
                         <tr>
-                          <th>User</th>
-                          <th>email</th>
-                          <th>mobile</th>
-                          <th>speciality</th>
+                          <th>badge name</th>
+                          <th>description</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr  v-for="(result, index) in results">
                             <td>@{{ result.name }}</td>
-                            <td>@{{ result.email }}</td>
-                            <td >@{{ result.mobile }}</td>
-                            <td><label class="badge badge-success">@{{ result.speciality }}</label></td>
+                            <td >@{{ result.description }}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -451,8 +448,8 @@
         },
 
         created() {
-            var students = {!! json_encode($students) !!};
-            this.results = students;
+            var badges = {!! json_encode($badges) !!};
+            this.results = badges;
         }
 
     })

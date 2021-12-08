@@ -32,6 +32,21 @@ Route::post('join', [SmsController::class, 'join'])->name('join');
 
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
+    Route::get('/admin/list', [AdminController::class, 'adminList'])->name('admin.list');
+
+    Route::get('/admin/specialities', [AdminController::class, 'specialities'])->name('admin.specialities');
+    Route::get('/admin/skills', [AdminController::class, 'skills'])->name('admin.skills');
+    Route::get('/admin/badges', [AdminController::class, 'badges'])->name('admin.badges');
+
+    Route::get('/admin/specialities/add', [AdminController::class, 'specialitiesAdd'])->name('speciality.add');
+    Route::post('/admin/specialities/add', [AdminController::class, 'specialitiesSave'])->name('speciality.save');
+
+    Route::get('/admin/skills/add', [AdminController::class, 'skillsAdd'])->name('skill.add');
+    Route::post('/admin/skills/add', [AdminController::class, 'skillsSave'])->name('skill.save');
+
+    Route::get('/admin/badges/add', [AdminController::class, 'badgesAdd'])->name('badge.add');
+    Route::post('/admin/badges/add', [AdminController::class, 'badgesSave'])->name('badge.save');
+
 });
 
 //Route::post('/success', [RegisterController::class, 'store'])->name('register');
