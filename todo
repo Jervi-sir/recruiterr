@@ -1,5 +1,23 @@
 [x] register in
 [x] middleware Role
-[] admin panel
-[] landing page if logged it
-[] admin Role
+[x] admin panel
+[x] landing page if logged it
+[x] admin Role
+[x] toastr
+[x] https automaticaly
+[x] roles
+[x] add edit delete most of tables in admin side
+
+[] charts
+[] list admins
+
+[] video section
+[] compressing and uploading images
+[] admin logo
+[] link with facebook page
+
+---- User ----
+[] update profile
+[] join groups
+[] chat
+[] comments

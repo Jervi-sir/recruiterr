@@ -7,6 +7,7 @@ use App\Models\Badge;
 use App\Models\Skill;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class AdminController extends Controller
 {
@@ -70,8 +71,9 @@ class AdminController extends Controller
         $specialitiy->description = $request->description;
         $specialitiy->save();
 
-        return  redirect()->route('admin.specialities');
+        Toastr::success('New Speciality added', '', ["positionClass" => "toast-top-center"]);
 
+        return  redirect()->route('admin.specialities');
     }
 
     public function specialitiesUpdate(Request $request)
@@ -82,6 +84,7 @@ class AdminController extends Controller
         $specialitiy->description = $request->description;
         $specialitiy->save();
 
+        Toastr::success('Speciality has been Updated', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.specialities');
     }
 
@@ -91,6 +94,7 @@ class AdminController extends Controller
         $specialitiy = Speciality::find($request->id);
         $specialitiy->delete();
 
+        Toastr::warning('Speciality has been Deleted', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.specialities');
     }
 
@@ -126,6 +130,7 @@ class AdminController extends Controller
         $skill->description = $request->description;
         $skill->save();
 
+        Toastr::success('new Skill added', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.skills');
 
     }
@@ -138,6 +143,7 @@ class AdminController extends Controller
         $specialitiy->description = $request->description;
         $specialitiy->save();
 
+        Toastr::success('Skill has been updated', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.skills');
     }
 
@@ -147,6 +153,7 @@ class AdminController extends Controller
         $specialitiy = Skill::find($request->id);
         $specialitiy->delete();
 
+        Toastr::warning('Skill has been Deleted', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.skills');
     }
 
@@ -184,6 +191,7 @@ class AdminController extends Controller
         $skill->description = $request->description;
         $skill->save();
 
+        Toastr::success('new Badge added', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.badges');
 
     }
@@ -195,6 +203,7 @@ class AdminController extends Controller
         $specialitiy->description = $request->description;
         $specialitiy->save();
 
+        Toastr::success('Badge has been Updated', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.badges');
     }
 
@@ -204,6 +213,7 @@ class AdminController extends Controller
         $specialitiy = Badge::find($request->id);
         $specialitiy->delete();
 
+        Toastr::warning('Badge has been Deleted', '', ["positionClass" => "toast-top-center"]);
         return  redirect()->route('admin.badges');
     }
 

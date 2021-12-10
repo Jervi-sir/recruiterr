@@ -20,6 +20,9 @@
   <link rel="stylesheet" href="../../admin/css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../admin/images/favicon.png" />
+
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
 </head>
 
 <body >
@@ -140,10 +143,10 @@
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
+              <a href="{{ route('home') }}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-apple-safari text-primary me-2"></i>  My site</a>
                 <form class="dropdown-item" method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" style="border: none; background: transparent;"> <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>{{ __('Log Out') }}</button>
+                    <button type="submit" style="padding:0; border: none; background: transparent;"> <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>{{ __('Log Out') }}</button>
                 </form>
             </div>
           </li>
@@ -376,6 +379,11 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
+
+  <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+  {!! Toastr::message() !!}
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <style>

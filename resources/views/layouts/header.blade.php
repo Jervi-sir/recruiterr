@@ -5,62 +5,9 @@
                 <nav id="dropdown" class="template-main-menu">
                     <ul class="menu-content">
                         <li class="header-nav-item">
-                            <a href="index-2.html" class="menu-link active">Home</a>
-                        </li>
-                        <li class="header-nav-item">
-                            <a href="#" class="menu-link have-sub">Community</a>
-                            <ul class="mega-menu mega-menu-col-2">
-                                <li>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="#">NewsFeed</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Profile Timeline</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Profile About</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Profile Friends</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Profile Group</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Profile Photo</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Profile Video</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="#">Profile Badges</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Forums</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Forums Topic</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Forums Timeline</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Forums Info</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Forums Members</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Forums Media</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <a href="" @click.prevent="1" class="menu-link active">
+                                @yield('title')
+                            </a>
                         </li>
                     </ul>
                 </nav>
@@ -146,73 +93,7 @@
     </div>
 </header>
 
-<style>
-    .log-logout-btn {
-        display: flex;
-    }
 
-    .log-logout-btn .logs a {
-        text-align: center;
-        display: block;
-        font-size: 14px;
-        font-weight: 700;
-        color: #221f97;
-        border-radius: 3px;
-        background-color: #ffffff;
-        padding: 3px 20px;
-        margin-right: 2rem;
-    }
-
-
-    @media only screen and (max-width: 1199px) {
-        .fixed-header .navbar {
-            padding: 19px 15px;
-            height: 89px;
-        }
-    }
-
-
-    @media only screen and (max-width: 991px) {
-        .fixed-header .navbar {
-            padding: 7px 10px;
-            height: 60px;
-        }
-
-    }
-
-
-    @media only screen and (max-width: 767px) {
-        .fixed-header .navbar {
-            padding: 2px 10px;
-            height: 50px;
-        }
-
-    }
-
-
-    @media only screen and (min-width: 577px) {
-        .fixed-header .header-control {
-            margin-left: auto;
-        }
-    }
-
-    @media only screen and (max-width: 575px) {
-        .log-logout-btn .logs a {
-            margin-right:0;
-        }
-        .log-logout-btn .logs a:first-of-type {
-            margin-right:10px;
-            margin-left:0;
-        }
-
-        .log-logout-btn .logs a:first-of-type {
-            margin-left:10px;
-        }
-
-    }
-
-
-</style>
 
 
 

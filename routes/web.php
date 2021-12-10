@@ -30,6 +30,12 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('join', [SmsController::class, 'join'])->name('join');
 
+Route::get('/newsfeed', [HomeController::class, 'newsfeed'])->name('newsfeed');
+Route::get('/groups', [HomeController::class, 'groups'])->name('groups');
+Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
+Route::get('/events', [HomeController::class, 'events'])->name('events');
+
+
 Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
     Route::get('/admin/list', [AdminController::class, 'adminList'])->name('admin.list');
