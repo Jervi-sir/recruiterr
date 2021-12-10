@@ -4,6 +4,8 @@
   padding-left: 0;
   padding-right: 0;
   label {
+    display: inline-flex;
+    align-items: center;
     font-size: .8125rem;
   }
   select {
@@ -194,7 +196,7 @@ table {
     tbody {
       td{
         &.select-checkbox {
-          &:before { 
+          &:before {
             top: 1.4rem;
             left: 20px;
             border: 1px solid $border-color;

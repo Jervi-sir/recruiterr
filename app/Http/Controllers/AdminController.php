@@ -34,7 +34,7 @@ class AdminController extends Controller
 
         $data_obj = (object)$data['students'];
 
-        return view('admin.students', ['students' => $data_obj]);
+        return view('admin.students.all', ['students' => $data_obj]);
     }
 
     public function specialities()
@@ -52,13 +52,13 @@ class AdminController extends Controller
 
         $data_obj = (object)$data['specialities'];
 
-        return view('admin.specialities', ['specialities' => $data_obj]);
+        return view('admin.specialities.all', ['specialities' => $data_obj]);
 
     }
 
     public function specialitiesAdd()
     {
-        return view('admin.specialityAdd');
+        return view('admin.specialities.add');
     }
 
     public function specialitiesSave(Request $request)
@@ -72,6 +72,26 @@ class AdminController extends Controller
 
         return  redirect()->route('admin.specialities');
 
+    }
+
+    public function specialitiesUpdate(Request $request)
+    {
+        $specialitiy = Speciality::find($request->id);
+        $specialitiy->name = $request->name;
+        $specialitiy->name_eng = $request->name_eng;
+        $specialitiy->description = $request->description;
+        $specialitiy->save();
+
+        return  redirect()->route('admin.specialities');
+    }
+
+
+    public function specialitiesDelete(Request $request)
+    {
+        $specialitiy = Speciality::find($request->id);
+        $specialitiy->delete();
+
+        return  redirect()->route('admin.specialities');
     }
 
     ///////////////////////////////////////////////
@@ -89,12 +109,12 @@ class AdminController extends Controller
 
         $data_obj = (object)$data['skills'];
 
-        return view('admin.skills', ['skills' => $data_obj]);
+        return view('admin.skills.all', ['skills' => $data_obj]);
     }
 
     public function skillsAdd()
     {
-        return view('admin.skillAdd');
+        return view('admin.skills.add');
 
     }
 
@@ -109,6 +129,27 @@ class AdminController extends Controller
         return  redirect()->route('admin.skills');
 
     }
+
+
+    public function skillsUpdate(Request $request)
+    {
+        $specialitiy = Skill::find($request->id);
+        $specialitiy->name = $request->name;
+        $specialitiy->description = $request->description;
+        $specialitiy->save();
+
+        return  redirect()->route('admin.skills');
+    }
+
+
+    public function skillsDelete(Request $request)
+    {
+        $specialitiy = Skill::find($request->id);
+        $specialitiy->delete();
+
+        return  redirect()->route('admin.skills');
+    }
+
 
     ///////////////////////////////////////////////
     public function badges()
@@ -125,12 +166,13 @@ class AdminController extends Controller
 
         $data_obj = (object)$data['badges'];
 
-        return view('admin.badges', ['badges' => $data_obj]);
+        return view('admin.badges.all', ['badges' => $data_obj]);
     }
 
     public function badgesAdd()
+
     {
-        return view('admin.badgesAdd');
+        return view('admin.badges.add');
 
     }
 
@@ -145,6 +187,27 @@ class AdminController extends Controller
         return  redirect()->route('admin.badges');
 
     }
+
+    public function badgesUpdate(Request $request)
+    {
+        $specialitiy = Badge::find($request->id);
+        $specialitiy->name = $request->name;
+        $specialitiy->description = $request->description;
+        $specialitiy->save();
+
+        return  redirect()->route('admin.badges');
+    }
+
+
+    public function badgesDelete(Request $request)
+    {
+        $specialitiy = Badge::find($request->id);
+        $specialitiy->delete();
+
+        return  redirect()->route('admin.badges');
+    }
+
+
 
 
 }

@@ -46,57 +46,10 @@
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text">welcome, <span class="text-black fw-bold">{{ Auth()->user()->name }}</span></h1>
             <h3 class="welcome-sub-text">List of students that registered </h3>
-            <a href="{{ route('speciality.add') }}">add speciality</a>
+
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown d-none d-lg-block">
-            <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false"> Select Category </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
-              <a class="dropdown-item py-3" >
-                <p class="mb-0 font-weight-medium float-left">Select category</p>
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Bootstrap Bundle </p>
-                  <p class="fw-light small-text mb-0">This is a Bundle featuring 16 unique dashboards</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">Angular Bundle</p>
-                  <p class="fw-light small-text mb-0">Everything you’ll ever need for your Angular projects</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">VUE Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 6 Premium Vue Admin Dashboard</p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-item-content flex-grow py-2">
-                  <p class="preview-subject ellipsis font-weight-medium text-dark">React Bundle</p>
-                  <p class="fw-light small-text mb-0">Bundle of 8 Premium React Admin Dashboard</p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="nav-item d-none d-lg-block">
-            <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
-              <span class="input-group-addon input-group-prepend border-right">
-                <span class="icon-calendar input-group-text calendar-icon"></span>
-              </span>
-              <input type="text" class="form-control">
-            </div>
-          </li>
-          <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-            </form>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
               <i class="icon-mail icon-lg"></i>
@@ -374,33 +327,15 @@
       <!-- partial -->
       <!-- partial:../../admin/partials/_sidebar.html -->
       @include('admin.leftMenu')
+
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
             <div class="col-lg-11 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Add skill</h4>
-                  <p class="card-description">
 
-                  </p>
-                  <div class="table-responsive">
-                    <form class="forms-sample" action="{{ route('skill.add') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                          <label for="exampleInputUsername1">Skill name</label>
-                          <input name="name" type="text" class="form-control" id="exampleInputUsername1" placeholder="name" v-model="name" @keypress="nameEng">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleTextarea1">description</label>
-                            <textarea name="description" class="form-control" id="exampleTextarea1" rows="8" ></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary me-2">add</button>
-                      </form>
-                  </div>
-                </div>
-              </div>
+                @yield('table')
+
             </div>
           </div>
         </div>
@@ -424,45 +359,77 @@
   <!-- Plugin js for this page -->
   <script src="../../admin/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- End plugin js for this page -->
+
+  <script src="../../admin/vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="../../admin/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+
+
   <!-- inject:js -->
   <script src="../../admin/js/off-canvas.js"></script>
   <script src="../../admin/js/hoverable-collapse.js"></script>
   <script src="../../admin/js/template.js"></script>
   <script src="../../admin/js/settings.js"></script>
   <script src="../../admin/js/todolist.js"></script>
+
+  <script src="../../admin/js/data-table.js"></script>
+
   <!-- endinject -->
   <!-- Custom js for this page-->
   <!-- End custom js for this page-->
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-
-  <script>
-    // this requires the compiler
-    var app = new Vue({
-        el: '#app',
-        data: {
-            results: [],
-            name: '',
-            name_eng:'',
-            disable_eng: false,
-        },
-        methods: {
-            nameEng: function () {
-                if(!this.disable_eng) {
-                    this.name_eng = this.name;
-                }
-            },
-            disableEng: function() {
-                this.disable_eng = true;
-            }
-        },
-
-        created() {
-
-        }
-
-    })
-  </script>
+  <style>
+    textarea {
+        resize: vertical;
+        overflow-x: unset;
+    }
+    textarea.form-control, textarea.asColorPicker-input, .select2-container--default textarea.select2-selection--single, .select2-container--default .select2-selection--single textarea.select2-search__field, textarea.typeahead, textarea.tt-query, textarea.tt-hint {
+        min-height: 8rem;
+    }
+    td.table-action,
+    th.table-action {
+        width: unset !important;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    .dataTables_wrapper label {
+        display: inline-flex;
+        align-items: center;
+    }
+    .dataTables_wrapper .row {
+        flex-direction: row-reverse;
+    }
+    .dataTables_length {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+    #order-listing_wrapper .col-sm-12.col-md-5 {
+        text-align: center;
+        align-items: center;
+        display: flex;
+    }
+    .modal {
+        background: #00000050;
+        backdrop-filter: blur(1px);
+    }
+    .overlay-modal {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .modal .row-actions {
+        display: flex;
+        align-content: center;
+    }
+    .modal .row-actions a {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+    }
+  </style>
+  @yield('vuejs')
 </body>
 
 </html>

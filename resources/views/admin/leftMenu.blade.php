@@ -20,12 +20,12 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+        <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="true" aria-controls="tables">
           <i class="menu-icon mdi mdi-table"></i>
           <span class="menu-title">Database</span>
           <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="tables">
+        <div class="collapse show" id="tables">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.students') }}">Students</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{ route('admin.specialities') }}">Specialities</a></li>

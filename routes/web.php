@@ -40,13 +40,18 @@ Route::middleware(['auth', 'admin'])->group(function() {
 
     Route::get('/admin/specialities/add', [AdminController::class, 'specialitiesAdd'])->name('speciality.add');
     Route::post('/admin/specialities/add', [AdminController::class, 'specialitiesSave'])->name('speciality.save');
+    Route::post('/admin/specialities/update', [AdminController::class, 'specialitiesUpdate'])->name('speciality.update');
+    Route::post('/admin/specialities/delete', [AdminController::class, 'specialitiesDelete'])->name('speciality.delete');
 
     Route::get('/admin/skills/add', [AdminController::class, 'skillsAdd'])->name('skill.add');
     Route::post('/admin/skills/add', [AdminController::class, 'skillsSave'])->name('skill.save');
+    Route::post('/admin/skills/update', [AdminController::class, 'skillsUpdate'])->name('skill.update');
+    Route::post('/admin/skills/delete', [AdminController::class, 'skillsDelete'])->name('skill.delete');
 
     Route::get('/admin/badges/add', [AdminController::class, 'badgesAdd'])->name('badge.add');
     Route::post('/admin/badges/add', [AdminController::class, 'badgesSave'])->name('badge.save');
-
+    Route::post('/admin/badges/update', [AdminController::class, 'badgesUpdate'])->name('badge.update');
+    Route::post('/admin/badges/delete', [AdminController::class, 'badgesDelete'])->name('badge.delete');
 });
 
 //Route::post('/success', [RegisterController::class, 'store'])->name('register');
