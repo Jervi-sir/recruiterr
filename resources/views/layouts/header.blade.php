@@ -5,7 +5,7 @@
                 <nav id="dropdown" class="template-main-menu">
                     <ul class="menu-content">
                         <li class="header-nav-item">
-                            <a href="" @click.prevent="1" class="menu-link active">
+                            <a href="" onclick="return false;" class="menu-link active">
                                 @yield('title')
                             </a>
                         </li>

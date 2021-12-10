@@ -31,7 +31,7 @@ class HomeController extends Controller
 
     public function groups()
     {
-        //
+        return view('groups.index');
     }
 
     public function courses()

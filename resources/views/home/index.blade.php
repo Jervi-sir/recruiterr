@@ -99,20 +99,7 @@ Maison d'entrepreneuriat
 @section('vuejs')
 <script>
     // this requires the compiler
-    var app = new Vue({
-        el: '#appvue',
-        data: {
-            results: [],
-        },
-        methods: {
 
-        },
-
-        created() {
-
-        }
-
-    })
 </script>
 @endsection
 

@@ -43,32 +43,29 @@
     <!-- Preloader Start Here -->
     <div id="preloader"></div>
     <!-- Preloader End Here -->
-    <div id="appvue">
-        <div id="wrapper" class="wrapper">
-            <!-- Top Header -->
-            @include('layouts.header')
-            <!-- Sidebar Left -->
-            @include('layouts.sidebarLeft')
-            <!-- Sidebar Right -->
-            @include('layouts.sidebarRight')
+    <div id="wrapper" class="wrapper">
+        <!-- Top Header -->
+        @include('layouts.header')
+        <!-- Sidebar Left -->
+        @include('layouts.sidebarLeft')
+        <!-- Sidebar Right -->
+        @include('layouts.sidebarRight')
 
-            <!-- Page Content -->
-            <div class="page-content">
-                <!--=====================================-->
-                <!--=        Newsfeed  Area Start       =-->
-                <!--=====================================-->
-                @yield('content')
-                <!--=====================================-->
-                <!--=        Footer Area Start       	=-->
-                <!--=====================================-->
-                @include('layouts.footer')
+        <!-- Page Content -->
+        <div class="page-content">
+            <!--=====================================-->
+            <!--=        Newsfeed  Area Start       =-->
+            <!--=====================================-->
+            @yield('content')
+            <!--=====================================-->
+            <!--=        Footer Area Start       	=-->
+            <!--=====================================-->
+            @include('layouts.footer')
 
-            </div>
-            <!-- Chat Modal Here -->
-            @include('layouts.chatModal')
         </div>
+        <!-- Chat Modal Here -->
+        @include('layouts.chatModal')
     </div>
-
     <!-- Jquery Js -->
     <script src="dependencies/jquery/js/jquery.min.js"></script>
     <script src="dependencies/popper.js/js/popper.min.js"></script>
