@@ -31,6 +31,9 @@
     <link rel="stylesheet" href="assets/css/app.css">
     <!-- Google Web Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet">
+
+    @yield('top-css')
+
 </head>
 
 <body class="bg-link-water">
@@ -85,13 +88,12 @@
 
     <!-- Site Scripts -->
     <script src="assets/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
     @yield('vuejs')
 
 
     @include('layouts.style')
-
+    @yield('bottom-style')
     {!! Toastr::message() !!}
 
 </body>

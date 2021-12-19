@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Article;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -52,8 +53,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function badges()
     {
+        return view('badges.index');
         //
     }
 
@@ -63,8 +65,16 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function profile()
     {
-        //
+        $skills = Skill::all();
+        return view('user.profile', ['skills' => json_encode($skills)]);
     }
+
+    public function profileUpdate(Request $request)
+    {
+        dd($request);
+        return view('user.profile');
+    }
+
 }

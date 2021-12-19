@@ -34,6 +34,9 @@ Route::get('/newsfeed', [HomeController::class, 'newsfeed'])->name('newsfeed');
 Route::get('/groups', [HomeController::class, 'groups'])->name('groups');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/events', [HomeController::class, 'events'])->name('events');
+Route::get('/badges', [HomeController::class, 'badges'])->name('badges');
+Route::get('/testlinkprofile', [HomeController::class, 'profile'])->name('profile');
+Route::post('/profile', [HomeController::class, 'profileUpdate'])->name('profile.update');
 
 
 Route::middleware(['auth', 'admin'])->group(function() {

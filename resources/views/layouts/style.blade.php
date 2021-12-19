@@ -90,7 +90,7 @@
     }
 
     .button-slide {
-        padding: 0 !important;
+        padding: 5px !important;
 
     }
 

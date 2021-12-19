@@ -13,7 +13,8 @@
                     <li><a href="{{ route('newsfeed') }}" class="menu-link" data-toggle="tooltip" data-placement="right" title="NEWSFEED"><i class="icofont-newspaper"></i></a></li>
                     <li><a href="{{ route('groups') }}" class="menu-link" data-toggle="tooltip" data-placement="right" title="GROUPS"><i class="icofont-users-alt-2"></i></a></li>
                     <li><a href="{{ route('courses') }}" class="menu-link" data-toggle="tooltip" data-placement="right" title="COURSES"><i class="icofont-play-alt-1"></i></a></li>
-                    <li><a href="{{ route('events') }}" class="menu-link" data-toggle="tooltip" data-placement="right" title="EVENT"><i class="icofont-calendar"></i></a></li>
+                    <li><a href="{{ route('events') }}" class="menu-link" data-toggle="tooltip" data-placement="right" title="EVENTS"><i class="icofont-calendar"></i></a></li>
+                    <li><a href="{{ route('badges') }}" class="menu-link" data-toggle="tooltip" data-placement="right" title="BADGES"><i class="icofont-badge"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -35,7 +36,8 @@
                     <li><a href="{{ route('newsfeed') }}" class="menu-link"><i class="icofont-newspaper"></i><span class="menu-title">Newsfeed</span></a></li>
                     <li><a href="{{ route('groups') }}" class="menu-link"><i class="icofont-users-alt-2"></i><span class="menu-title">Groups</span></a></li>
                     <li><a href="{{ route('courses') }}" class="menu-link"><i class="icofont-play-alt-1"></i><span class="menu-title">Courses</span></a></li>
-                    <li><a href="{{ route('events') }}" class="menu-link"><i class="icofont-calendar"></i><span class="menu-title">Event</span></a></li>
+                    <li><a href="{{ route('events') }}" class="menu-link"><i class="icofont-calendar"></i><span class="menu-title">Events</span></a></li>
+                    <li><a href="{{ route('badges') }}" class="menu-link"><i class="icofont-badge"></i><span class="menu-title">Badges</span></a></li>
                 </ul>
             </div>
         </div>

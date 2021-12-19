@@ -45,7 +45,7 @@
     }
 
     /*-------------------------------------
-    On Scroll 
+    On Scroll
     -------------------------------------*/
     $(window).on('scroll', function() {
 
@@ -137,7 +137,7 @@
     --------------------------------------*/
     $('#wrapper').on('click', '.toggler-open', function(event) {
         event.preventDefault();
-        
+
         var $this = $(this),
             wrapp = $(this).parents('body').find('#wrapper'),
             wrapMask = $('<div / >').addClass('closeMask'),
@@ -193,7 +193,7 @@
 
     $('#chat-head-toggle').on("click", function() {
         $(this).parents('.fixed-sidebar').toggleClass('chat-head-hide');
-        
+
     });
 
     $('.chat-plus-icon').on("click", function() {
@@ -214,7 +214,7 @@
             $('#chat-box-modal').removeClass('shrink');
         }, 300);
     });
-    
+
 
     $('.drop-btn').on('click', function() {
         var $this = $(this),
@@ -371,14 +371,14 @@
     elevateZoom();
 
     /*-------------------------------------
-        Tooltip
+        Tooltip taken off
     -------------------------------------*/
-    $('[data-toggle="tooltip"]').tooltip()
+    //$('[data-toggle="tooltip"]').tooltip()
 
     /*-------------------------------------
         Slick Carousel
     -------------------------------------*/
-    $(".slick-carousel").slick();
+    //$(".slick-carousel").slick();
 
     /*-------------------------------------
         Select2 activation code

@@ -61,6 +61,9 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <ul class="admin-options">
+                                @if(Auth()->user()->role()->first()->role_name == 'admin' || Auth()->user()->role()->first()->role_name == 'su')
+                                <li><a href="{{ route('admin.students') }}">Admin Pannel</a></li>
+                                @endif
                                 <li><a href="#">Profile Settings</a></li>
                                 <li><a href="#">Groups</a></li>
                                 <li><a href="#">Forums</a></li>
