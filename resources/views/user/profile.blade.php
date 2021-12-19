@@ -19,7 +19,7 @@ Maison d'entrepreneuriat
     </div>
     <div class="row" id="formProfile" >
         <div class="col-lg-8">
-            <div class="block-box p-5">
+            <div class="block-box">
                 <h3 class="item-title">Complete your profile</h3>
                 <form action="{{ route('profile.update') }}" method="POST">
                     @csrf
@@ -148,7 +148,7 @@ Maison d'entrepreneuriat
                             <textarea v-model='user.bio' name="bio" id="message" cols="30" rows="3" class="textarea form-control" placeholder="Message"></textarea>
                         </div>
                         <div class="col-12 form-group">
-                            <input type="submit" class="submit-btn" value="Send Us Message">
+                            <input type="submit" class="submit-btn" value="Update My Profile">
                         </div>
                     </div>
                     <div class="form-response"></div>
@@ -156,7 +156,8 @@ Maison d'entrepreneuriat
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="block-box p-5 user-preview">
+            <div class="block-box user-preview">
+                <h3 class="item-title">preview</h3>
                 <div class="user-image">
                     <img src="media/figure/chat_1.jpg" alt="">
                 </div>
@@ -281,6 +282,9 @@ Maison d'entrepreneuriat
 
 @section('bottom-style')
 <style>
+    .block-box {
+        padding: 1rem 2rem !important;
+    }
     .lang-level span {
         font-weight: 700;
     }
