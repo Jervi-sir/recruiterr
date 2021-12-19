@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Skill;
+use App\Models\Speciality;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -68,7 +69,28 @@ class HomeController extends Controller
     public function profile()
     {
         $skills = Skill::all();
-        return view('user.profile', ['skills' => json_encode($skills)]);
+        $specialities = Speciality::all();
+
+        foreach ($skills as $key => $skill) {
+            $data['skills'][$key] = [
+                'id' => $skill->id,
+                'name' => $skill->name,
+            ];
+        }
+
+        foreach ($specialities as $key => $speciality) {
+            $data['specialities'][$key] = [
+                'id' => $speciality->id,
+                'name' => $speciality->name,
+            ];
+        }
+
+        //$data_obj = (object)$data['skills'];
+        //$data_obj = (object)$data['specialities'];
+
+        return view('user.profile', ['skills' => json_encode($data['skills']),
+                                     'specialities' => json_encode($data['specialities'])
+                                    ]);
     }
 
     public function profileUpdate(Request $request)

@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="dependencies/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="dependencies/select2/css/select2.min.css">
 
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <!-- Site Stylesheet -->
     <link rel="stylesheet" href="assets/css/app.css">
     <!-- Google Web Fonts -->
@@ -83,8 +83,8 @@
     <script src="dependencies/elevate-zoom/jquery.elevatezoom.js"></script>
     <script src="dependencies/bootstrap-validator/js/validator.min.js"></script>
 
-    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
     <!-- Site Scripts -->
     <script src="assets/js/app.js"></script>
