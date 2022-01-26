@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Role;
+use App\Models\Skill;
 use App\Models\Profile;
 use App\Models\Speciality;
 use Laravel\Sanctum\HasApiTokens;
@@ -65,5 +66,9 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class);
+    }
 
 }

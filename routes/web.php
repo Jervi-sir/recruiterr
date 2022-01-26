@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +37,19 @@ Route::get('/groups', [HomeController::class, 'groups'])->name('groups');
 Route::get('/courses', [HomeController::class, 'courses'])->name('courses');
 Route::get('/events', [HomeController::class, 'events'])->name('events');
 Route::get('/badges', [HomeController::class, 'badges'])->name('badges');
-Route::get('/testlinkprofile', [HomeController::class, 'profile'])->name('profile');
-Route::post('/profile', [HomeController::class, 'profileUpdate'])->name('profile.update');
+
+Route::middleware(['auth'])->group(function() {
+    Route::get('/completeProfile', [ProfileController::class, 'completeProfile'])->name('profile.complete');
+    Route::post('/completeProfile', [ProfileController::class, 'profileUpdate'])->name('profile.completeUpdate');
+
+    Route::get('/myProfile', [ProfileController::class, 'myProfile'])->name('profile.mine');
+    Route::get('/editProfile', [ProfileController::class, 'editMyProfile'])->name('profile.editMine');
+    Route::post('/editProfile', [ProfileController::class, 'updateMyProfile'])->name('profile.update');
+
+    Route::get('/add-article', [ArticleController::class, 'addPost'])->name('article.add');
+    Route::post('/add-article', [ArticleController::class, 'publishPost'])->name('article.publish');
+
+});
 
 
 Route::middleware(['auth', 'admin'])->group(function() {
@@ -88,7 +101,8 @@ Route::get('verifySms', [SmsController::class, 'getVerify'])->name('sms.verify')
 Route::post('verifySmss', [SmsController::class, 'verify'])->name('sms.verify');
 Route::get('joined', [SmsController::class, 'joined']);
 */
-
+/*
 Route::any('/{any}', function () {
     return back();
 });
+*/

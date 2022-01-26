@@ -77,15 +77,13 @@ class RegisteredUserController extends Controller
         $profile->family_name = $request->name;
         $profile->speciality_id = $request->field;
         $profile->save();
-
-        return view('success');
-
-
+        //return view('success');
 
         event(new Registered($user));
 
         Auth::login($user);
+        return redirect()->route('profile.complete');
 
-        return redirect(RouteServiceProvider::HOME);
+        //return redirect(RouteServiceProvider::HOME);
     }
 }

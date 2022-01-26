@@ -20,47 +20,53 @@ Maison d'entrepreneuriat
     <div class="row" id="formProfile" >
         <div class="col-lg-8">
             <div class="block-box">
-                <h3 class="item-title">Complete your profile</h3>
-                <form action="{{ route('profile.update') }}" method="POST">
+                <h3 class="item-title">Complete my profile</h3>
+                <form action="{{ route('profile.completeUpdate') }}" method="POST">
                     @csrf
                     <div class="row gutters-20">
                         <div class="col-lg-6 form-group">
-                            <label for="">First Name</label>
-                            <input v-model='user.familyName' type="text" class="form-control" name="first_name" placeholder="Enter your First Name">
+                            <label for="">
+                                <span>First Name</span>
+                                <div class="annotation" title="first name"> ? </div></label>
+                            <input v-model='user.familyName' type="text" class="form-control" name="first_name" placeholder="Enter your First Name" required>
                         </div>
                         <div class="col-lg-6 form-group">
-                            <label for="">Last Name</label>
-                            <input v-model='user.firstName' type="text" class="form-control" name="last_name" placeholder="Enter your Last Name">
+                            <label for="">
+                                <span>Last Name</span>
+                                <div class="annotation" title="first name"> ? </div></label>
+                            </label>
+                            <input v-model='user.firstName' type="text" class="form-control" name="last_name" placeholder="Enter your Last Name" required>
                         </div>
 
                         <div class="col-lg-6 form-group">
-                            <label for="">Email</label>
-                            <input v-model='user.email' type="email" class="form-control" name="email" placeholder="E-mail">
-                        </div>
-
-                        <div class="col-lg-6 form-group">
-                            <label for="">Birthdate</label>
-                            <input v-model='user.birthdate' type="date" class="form-control" name="birth-date" placeholder="E-mail">
+                            <label for="">
+                                <span>Email</span>
+                                <div class="annotation" title="first name"> ? </div></label>
+                            </label>
+                            <input v-model='user.email' type="email" class="form-control" placeholder="E-mail" disabled>
                         </div>
 
                         <div class="col-lg-6 form-group">
                             <label for="">Phone number</label>
-                            <input v-model='user.phone' type="text" class="form-control" name="phone_number" placeholder="Phone">
+                            <input v-model='user.phone' type="text" class="form-control" name="phone_number" placeholder="Phone" required>
+                        </div>
+
+                        <div class="col-lg-6 form-group">
+                            <label for="">Birthdate</label>
+                            <input v-model='user.birthdate' type="date" class="form-control" name="birth_date" placeholder="E-mail" required>
+                        </div>
+
+                        <div class="col-lg-6 form-group">
+                        </div>
+
+                        <div class="col-lg-6 form-group">
+                            <label for="">Grade</label>
+                            <input v-model='user.grade' type="text" class="form-control" name="student_code" placeholder="Code" >
                         </div>
 
                         <div class="col-lg-6 form-group">
                             <label for="">Student Code</label>
                             <input v-model='user.code' type="text" class="form-control" name="student_code" placeholder="Code">
-                        </div>
-
-                        <div class="col-lg-12 form-group">
-                            <label for="">Grade</label>
-                            <select v-model='user.grade' name="grade" @change='selectGrade' class="custom-select select" id="inputGroupSelect01">
-                                <option hidden selected>Select your grade</option>
-                                <option v-for="(speciality, index) in specialities" :value='speciality.id'>
-                                    @{{ speciality.name }}
-                                </option>
-                            </select>
                         </div>
 
                         <div class="line-separator"></div>
@@ -116,7 +122,7 @@ Maison d'entrepreneuriat
                         </div>
 
                         <div class="line-separator"></div>
-
+                        <!--
                         <div class="col-lg-4 form-group">
                             <label for="">What formation you need</label>
                             <select name="formations" class="form-select custom-select" size="3" aria-label="size 3 select example">
@@ -125,36 +131,37 @@ Maison d'entrepreneuriat
                                 <option value="3">Three</option>
                             </select>
                         </div>
-
+                        -->
                         <div class="col-lg-12 form-group radioBox">
                             <label for="">Do u need help from Entp</label>
                             <div class="box-choise">
                                 <div class="choise">
-                                    <input id="help-yes" name="entp-help" value="yes" type="radio" class="form-control" aria-label="yes">
+                                    <input id="help-yes" name="entp_help" value="yes" type="radio" class="form-control" aria-label="yes">
                                     <label for="help-yes">Yes</label>
                                 </div>
                                 <div class="choise">
-                                    <input id="help-no" name="entp-help" value="no" type="radio" class="form-control" aria-label="no">
+                                    <input id="help-no" name="entp_help" value="no" type="radio" class="form-control" aria-label="no">
                                     <label for="help-no">No</label>
                                 </div>
                                 <div class="choise">
-                                    <input id="help-probably" name="entp-help" value="probably" type="radio" class="form-control" aria-label="probably">
+                                    <input id="help-probably" name="entp_help" value="probably" type="radio" class="form-control" aria-label="probably">
                                     <label for="help-probably">Probably</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 form-group">
-                            <label for="">Bio about me</label>
-                            <textarea v-model='user.bio' name="bio" id="message" cols="30" rows="3" class="textarea form-control" placeholder="Message"></textarea>
+                            <label for="">Bio</label>
+                            <textarea v-model='user.bio' name="bio" id="message" cols="30" rows="3" class="textarea form-control" placeholder="About Me and My Goals"></textarea>
                         </div>
-                        <div class="col-12 form-group">
-                            <input type="submit" class="submit-btn" value="Update My Profile">
+                        <div class="col-12 form-group submit-internal">
+                            <input id="submit-btn" type="submit" class="submit-btn" value="Update My Profile">
                         </div>
                     </div>
                     <div class="form-response"></div>
                 </form>
             </div>
         </div>
+
         <div class="col-lg-4">
             <div class="block-box user-preview">
                 <h3 class="item-title">preview</h3>
@@ -228,6 +235,10 @@ Maison d'entrepreneuriat
                 <div class="user-need-formation"></div>
             </div>
         </div>
+
+        <div class="col-lg-4 form-group submit-external">
+            <input type="submit" class="submit-btn" value="Update My Profile" @click="submit">
+        </div>
     </div>
 </div>
 
@@ -248,6 +259,7 @@ Maison d'entrepreneuriat
             selectedTags: [],
             existingTags: [],
             selectedSpeciality: '',
+            profile: '',
             user: {
                 familyName: '',
                 firstName: '',
@@ -267,11 +279,19 @@ Maison d'entrepreneuriat
         methods: {
             selectGrade: function() {
                 this.selectedSpeciality = this.specialities.find(item => item.id === this.user.grade).name;
+            },
+            submit:function() {
+                document.getElementById('submit-btn').click();
             }
         },
         mounted() {
             this.existingTags = JSON.parse({!! json_encode($skills) !!});
             this.specialities = JSON.parse({!! json_encode($specialities) !!});
+            this.profile = JSON.parse({!! json_encode($profile) !!});
+            this.user.grade = this.profile.grade;
+            this.user.email = this.profile.email;
+            this.user.code = this.profile.code;
+            this.user.phone = this.profile.phone;
         }
     });
 
@@ -282,6 +302,13 @@ Maison d'entrepreneuriat
 
 @section('bottom-style')
 <style>
+    label {
+        display: flex;
+        gap: 2rem;
+    }
+    label .annotation {
+        cursor: pointer;
+    }
     .block-box {
         padding: 1rem 2rem !important;
     }
@@ -308,6 +335,8 @@ Maison d'entrepreneuriat
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        position: sticky;
+        top: 10rem;
     }
     .user-image {
         width: 80px;
@@ -390,6 +419,14 @@ Maison d'entrepreneuriat
         margin: 0;
     }
 
+    .submit-external {
+        display: none;
+    }
+
+    .submit-internal {
+        text-align: end;
+    }
+
     @media (max-width: 991px) {
         .radioBox {
             flex-direction: column;
@@ -398,6 +435,16 @@ Maison d'entrepreneuriat
         .custom-range {
             flex-direction: column;
             align-items: unset;
+        }
+        .submit-internal {
+            display: none;
+        }
+        .submit-external {
+            display: unset;
+            text-align: center;
+        }
+        .form-group .submit-btn {
+            width: 100%;
         }
     }
 

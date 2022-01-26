@@ -60,43 +60,4 @@ class HomeController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function profile()
-    {
-        $skills = Skill::all();
-        $specialities = Speciality::all();
-
-        foreach ($skills as $key => $skill) {
-            $data['skills'][$key] = [
-                'id' => $skill->id,
-                'name' => $skill->name,
-            ];
-        }
-
-        foreach ($specialities as $key => $speciality) {
-            $data['specialities'][$key] = [
-                'id' => $speciality->id,
-                'name' => $speciality->name,
-            ];
-        }
-
-        //$data_obj = (object)$data['skills'];
-        //$data_obj = (object)$data['specialities'];
-
-        return view('user.profile', ['skills' => json_encode($data['skills']),
-                                     'specialities' => json_encode($data['specialities'])
-                                    ]);
-    }
-
-    public function profileUpdate(Request $request)
-    {
-        dd($request);
-        return view('user.profile');
-    }
-
 }

@@ -64,12 +64,17 @@
                                 @if(Auth()->user()->role()->first()->role_name == 'admin' || Auth()->user()->role()->first()->role_name == 'su')
                                 <li><a href="{{ route('admin.students') }}">Admin Pannel</a></li>
                                 @endif
-                                <li><a href="#">Profile Settings</a></li>
-                                <li><a href="#">Groups</a></li>
-                                <li><a href="#">Forums</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#">Terms and Conditions</a></li>
-                                <li><a href="#">Contact</a></li>
+                                @auth
+                                <li><a href="{{ route('profile.mine') }}">My Profile</a></li>
+                                @endauth
+                                <li><a href="{{ route('article.add') }}">Add an Article</a></li>
+                                <!--
+                                    <li><a href="#">Groups</a></li>
+                                    <li><a href="#">Forums</a></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="#">Terms and Conditions</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                -->
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf

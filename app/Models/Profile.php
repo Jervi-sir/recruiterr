@@ -20,11 +20,6 @@ class Profile extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function skills()
-    {
-        return $this->hasMany(Skill::class);
-    }
-    
     public function formations()
     {
         return $this->hasMany(Formation::class);
