@@ -21,7 +21,7 @@ Maison d'entrepreneuriat
         <div class="col-lg-4">
             <div class="block-box">
                 <div class="image">
-                    <img src="media/figure/chat_1.jpg" alt="">
+                    <img :src="user.profile_pic" alt="">
                 </div>
                 <div class="row-card">
                     <label>Username</label>
@@ -158,7 +158,7 @@ Maison d'entrepreneuriat
         mounted() {
             this.user = JSON.parse({!! json_encode($profile) !!});
             this.selectedTags = JSON.parse({!! json_encode($userSkills) !!});
-
+            this.user.profile_pic = this.user.profile_pic == '' ? 'media/figure/chat_1.jpg' : this.user.profile_pic;
         }
     });
 

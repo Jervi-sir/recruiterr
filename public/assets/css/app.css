@@ -2648,6 +2648,10 @@ nav.template-main-menu>ul>li:hover ul.mega-menu {
 .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-img {
     margin-right: 18px;
     position: relative;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
 }
 
 @media only screen and (max-width: 479px) {
@@ -2665,6 +2669,7 @@ nav.template-main-menu>ul>li:hover ul.mega-menu {
 
 .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-img img {
     border-radius: 50%;
+    width: 100%;
 }
 
 .fixed-header .header-control .dropdown-admin .dropdown-toggle .item-img .acc-verified {

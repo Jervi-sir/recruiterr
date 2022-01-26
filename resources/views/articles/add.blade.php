@@ -38,11 +38,10 @@ Maison d'entrepreneuriat
                         </div>
 
                         <div class="col-lg-12 form-group">
-                            <label for="">Article Link <small>(optional)</small></label>
-                            <input v-model="link" type="text" class="form-control" name="link" placeholder="Link of the article, example: facebook.com/p...">
+                            <label for="">Article Link</label>
+                            <input v-model="link" type="text" class="form-control" name="link" placeholder="Link of the article, example: facebook.com/p..." required>
                             <span v-show="error.link.state" class="error">@{{ error.link.text }}</span>
                         </div>
-
 
                         <div class="col-lg-12 form-group">
                             <label for="add-image">Quick Description</label>
@@ -58,17 +57,6 @@ Maison d'entrepreneuriat
                 </form>
             </div>
         </div>
-        <div class="col-lg-4">
-            link @{{link}}
-            <br>
-            image @{{image}}
-            <br>
-            description @{{description}}
-            <br>
-            title @{{title}}
-            <br>
-        </div>
-
     </div>
 </div>
 

@@ -51,7 +51,7 @@
                         <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                             <span class="media">
                                 <span class="item-img">
-                                    <img src="media/figure/chat_1.jpg" alt="Chat">
+                                    <img src="{{ Auth()->user()->profile->profile_pic ? Auth()->user()->profile->profile_pic : 'media/figure/chat_1.jpg' }}" alt="Chat">
                                     <span class="acc-verified"><i class="icofont-check"></i></span>
                                 </span>
                                 <span class="media-body">
@@ -66,8 +66,10 @@
                                 @endif
                                 @auth
                                 <li><a href="{{ route('profile.mine') }}">My Profile</a></li>
-                                @endauth
+                                @if(Auth()->user()->role()->first()->role_name == 'admin' || Auth()->user()->role()->first()->role_name == 'su')
                                 <li><a href="{{ route('article.add') }}">Add an Article</a></li>
+                                @endif
+                                @endauth
                                 <!--
                                     <li><a href="#">Groups</a></li>
                                     <li><a href="#">Forums</a></li>

@@ -176,6 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Brian2694\Toastr\ToastrServiceProvider::class,
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
+
     ],
 
     /*
@@ -231,6 +233,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
+        'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
+
     ],
 
 ];

@@ -12,6 +12,7 @@ Maison d'entrepreneuriat
 
     <div class="newsfeed-search">
         <ul class="member-list">
+        <!--
             <li class="active-member">
                 <a href="#">
                     <span class="member-icon">
@@ -23,6 +24,7 @@ Maison d'entrepreneuriat
                     <span class="member-count">{{ $user_count }}</span>
                 </a>
             </li>
+        -->
         </ul>
         <ul class="search-list">
             <li class="search-input">

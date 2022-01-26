@@ -14,13 +14,28 @@ Maison d'entrepreneuriat
         <div class="col-lg-8">
             <div class="block-box">
                 <h3 class="item-title">Edit my profile</h3>
-                <form action="{{ route('profile.update') }}" method="POST">
+                <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row gutters-20">
+
+                        <div class="col-lg-12 form-group">
+                            <label for="select-image">Image</label>
+
+                            <div class="file-btn">
+                                <label for="select-image">Change Image</label>
+                                <input id="select-image" type="file" class="form-control" accept="image/*" name="image" @change="previewFiles" required hidden>
+                                <div class="preview">
+                                    <span class="details">@{{ imageDetails }}</span>
+                                    <img class="preview" :src="image" alt="">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-lg-6 form-group">
                             <label for="">
                                 <span>First Name</span>
-                                <div class="annotation" title="first name"> ? </div></label>
+                                <div class="annotation" title="first name"> ? </div>
+                            </label>
                             <input v-model='user.familyName' type="text" class="form-control" name="first_name" placeholder="Enter your First Name" required>
                         </div>
                         <div class="col-lg-6 form-group">
@@ -143,7 +158,7 @@ Maison d'entrepreneuriat
             <div class="block-box user-preview">
                 <h3 class="item-title">preview</h3>
                 <div class="user-image">
-                    <img src="media/figure/chat_1.jpg" alt="">
+                    <img :src="image" alt="">
                 </div>
                 <h6>Details</h6>
                 <div class="user-names">
@@ -252,6 +267,8 @@ Maison d'entrepreneuriat
                 },
                 bio: '',
             },
+            image: '',
+            imageDetails: '',
         },
         methods: {
             selectGrade: function() {
@@ -259,13 +276,18 @@ Maison d'entrepreneuriat
             },
             submit:function() {
                 document.getElementById('submit-btn').click();
-            }
+            },
+            previewFiles: function(event) {
+                const file = event.target.files[0];
+                this.image = URL.createObjectURL(file);
+                this.imageDetails = file.name;
+            },
         },
         mounted() {
             this.existingTags = JSON.parse({!! json_encode($skills) !!});
             this.user = JSON.parse({!! json_encode($profile) !!});
             this.selectedTags = JSON.parse({!! json_encode($userSkills) !!});
-
+            this.image = this.user.profile_pic == '' ? 'media/figure/chat_1.jpg' : this.user.profile_pic;
 
         }
     });
@@ -277,6 +299,46 @@ Maison d'entrepreneuriat
 
 @section('bottom-style')
 <style>
+    .file-btn {
+        color: #111111;
+        border-color: #d7d7d7;
+        background-color: #ffffff;
+        border-radius: 4px;
+        height: 50px;
+        border: 1px solid #d7d7d7;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        justify-content: space-between;
+    }
+
+    .file-btn label {
+        margin: 0;
+        padding: 0 20px;
+        color: rgb(134, 134, 134);
+        background-color: #d7d7d7;
+        height: 100%;
+        text-align: center;
+        /* vertical-align: middle; */
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .preview img {
+        max-width: 100%;
+        height: auto;
+        height: 40px;
+        border-radius: 4px;
+        padding-right: 5px;
+    }
+
+    @media (max-width: 666px) {
+        .preview .details {
+            display: none;
+        }
+    }
+
     label {
         display: flex;
         gap: 2rem;
@@ -315,9 +377,12 @@ Maison d'entrepreneuriat
     }
     .user-image {
         width: 80px;
+        height: 80px;
         border-radius: 100%;
         overflow: hidden;
         margin: auto;
+        display: flex;
+        align-items: center;
     }
     .user-image img {
         width: 100%

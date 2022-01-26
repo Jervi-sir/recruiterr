@@ -6,6 +6,7 @@ use App\Models\Skill;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class ProfileController extends Controller
 {
@@ -14,6 +15,10 @@ class ProfileController extends Controller
     /* ----- get complete profile page ----*/
     public function completeProfile()
     {
+        if(Auth()->user()->isVerified != 0) {
+            return redirect()->route('profile.editMine');
+        }
+
         $skills = Skill::all();
         $specialities = Speciality::all();
         $user = Auth()->user();
@@ -25,6 +30,7 @@ class ProfileController extends Controller
             'familyName' => $profile->family_name,
             'birthdate' => $profile->birthday,
             'bio' => $profile->bio,
+            'profile_pic' => $profile->profile_pic,
 
             'email' => $user->email,
             'code' => $user->code,
@@ -72,6 +78,7 @@ class ProfileController extends Controller
             'phone' => $user->mobile,
             'joined_at' => $user->created_at->format('M d, Y'),
 
+            'profile_pic' => $profile->profile_pic,
             'familyName' => $profile->first_name,
             'firstName' => $profile->family_name,
             'birthdate' => date('M d, Y', strtotime($profile->birthday)),
@@ -111,6 +118,7 @@ class ProfileController extends Controller
             'code' => $user->code,
             'phone' => $user->mobile,
 
+            'profile_pic' => $profile->profile_pic,
             'familyName' => $profile->first_name,
             'firstName' => $profile->family_name,
             'birthdate' => $profile->birthday,
@@ -139,11 +147,12 @@ class ProfileController extends Controller
 
     }
 
-
     /*--------------STORES ------------------*/
     /* ----- update my profile page ----*/
     public function updateMyProfile(Request $request)
     {
+        $uploadedFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [ "quality" => "50"])->getSecurePath();
+
         //Tags to json array
         $skills = $this->requestedSkillsToJson($request->tags);
         //get skill names array
@@ -164,6 +173,7 @@ class ProfileController extends Controller
         $profile->bio = $request->bio;
         $profile->languages = $languages;
         $profile->skills = $skills_name_array;
+        $profile->profile_pic = $uploadedFileUrl;
         $profile->save();
 
         //save User side
@@ -184,6 +194,9 @@ class ProfileController extends Controller
     /* ----- finish completing my profile page ----*/
     public function finishCompleteProfile(Request $request)
     {
+
+        $uploadedFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [ "quality" => "50"])->getSecurePath();
+
         //Tags to json array
         $skills = $this->requestedSkillsToJson($request->tags);
         //get skill names array
@@ -205,6 +218,7 @@ class ProfileController extends Controller
         $profile->bio = $request->bio;
         $profile->languages = $languages;
         $profile->skills = $skills_name_array;
+        $profile->profile_pic = $uploadedFileUrl;
         $profile->save();
 
         //save User side
