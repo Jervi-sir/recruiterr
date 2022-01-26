@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
 {
+    /*--------------GET PAGE ------------------*/
+
+    /* ----- get complete profile page ----*/
     public function completeProfile()
     {
         $skills = Skill::all();
@@ -50,49 +53,7 @@ class ProfileController extends Controller
                                     ]);
     }
 
-    public function profileUpdate(Request $request)
-    {
-        $skills_name_array = [];
-        foreach ($request->tags as $key => $skill) {
-            array_push($skills_name_array, json_decode($skill)->name);
-        }
-
-        $user = Auth()->user();
-        $profile = $user->profile;
-
-        $languages = [
-            'english' => $request->level_english,
-            'french' => $request->level_french,
-            'arabic' => $request->level_arabic,
-        ];
-
-        $profile->first_name = $request->first_name;
-        $profile->family_name = $request->last_name;
-        $profile->birthday = $request->birth_date;
-        $profile->entp_help = $request->entp_help;
-        $profile->bio = $request->bio;
-        $profile->languages = json_encode($languages);
-        $profile->skills = implode(", ", $skills_name_array);
-
-        $profile->save();
-
-
-        $user->mobile = $request->phone_number;
-        $user->code = $request->student_code;
-        $user->isVerified = 2;              //with no email verification
-        $user->save();
-
-        //attach skills rls
-        $user->skills()->detach();
-
-        foreach ($request->tags as $key => $skill) {
-            $skill_id = json_decode($skill)->id;
-            $user->skills()->attach($skill_id);
-        }
-
-        return redirect()->route('home');
-    }
-
+    /* ----- get my profile page ----*/
     public function myProfile() {
 
         $user = Auth()->user();
@@ -124,13 +85,13 @@ class ProfileController extends Controller
             ]
         ];
 
-
         return view('user.myProfile', ['userSkills' => json_encode($data['userSkills']),
                                         'profile' => json_encode($data['profile'])
                                      ]);
 
     }
 
+    /* ----- get edit my profile page ----*/
     public function editMyProfile() {
         $user = Auth()->user();
         $profile = $user->profile;
@@ -178,43 +139,136 @@ class ProfileController extends Controller
 
     }
 
+
+    /*--------------STORES ------------------*/
+    /* ----- update my profile page ----*/
     public function updateMyProfile(Request $request)
     {
-        $skills_name_array = [];
-        foreach ($request->tags as $key => $skill) {
-            array_push($skills_name_array, json_decode($skill)->name);
-        }
+        //Tags to json array
+        $skills = $this->requestedSkillsToJson($request->tags);
+        //get skill names array
+        $skills_name_array = $this->skillsName($skills);
+        //add new tag if not existing
+        $skills = $this->addNewSkills($skills);
+        //getLanguages levels
+        $languages = $this->getLanguageLevels($request->level_english, $request->level_french, $request->level_arabic);
 
+        //getUser and his profile
         $user = Auth()->user();
         $profile = $user->profile;
 
-        $languages = [
-            'english' => $request->level_english,
-            'french' => $request->level_french,
-            'arabic' => $request->level_arabic,
-        ];
-
+        //save Profile side
         $profile->first_name = $request->first_name;
         $profile->family_name = $request->last_name;
         $profile->birthday = $request->birth_date;
         $profile->bio = $request->bio;
-        $profile->languages = json_encode($languages);
-        $profile->skills = implode(", ", $skills_name_array);
+        $profile->languages = $languages;
+        $profile->skills = $skills_name_array;
         $profile->save();
 
-
+        //save User side
         $user->mobile = $request->phone_number;
         $user->code = $request->student_code;
         $user->save();
 
         //attach skills rls
         $user->skills()->detach();
-
-        foreach ($request->tags as $key => $skill) {
-            $skill_id = json_decode($skill)->id;
+        foreach ($skills as $key => $skill) {
+            $skill_id = $skill->id;
             $user->skills()->attach($skill_id);
         }
 
         return redirect()->route('profile.mine');
     }
+
+    /* ----- finish completing my profile page ----*/
+    public function finishCompleteProfile(Request $request)
+    {
+        //Tags to json array
+        $skills = $this->requestedSkillsToJson($request->tags);
+        //get skill names array
+        $skills_name_array = $this->skillsName($skills);
+        //add new tag if not existing
+        $skills = $this->addNewSkills($skills);
+        //getLanguages levels
+        $languages = $this->getLanguageLevels($request->level_english, $request->level_french, $request->level_arabic);
+
+        //getUser and his profile
+        $user = Auth()->user();
+        $profile = $user->profile;
+
+        //save Profile side
+        $profile->first_name = $request->first_name;
+        $profile->family_name = $request->last_name;
+        $profile->birthday = $request->birth_date;
+        $profile->entp_help = $request->entp_help;
+        $profile->bio = $request->bio;
+        $profile->languages = $languages;
+        $profile->skills = $skills_name_array;
+        $profile->save();
+
+        //save User side
+        $user->mobile = $request->phone_number;
+        $user->code = $request->student_code;
+        $user->isVerified = 2;              //with no email verification
+        $user->save();
+
+        //attach skills rls
+        $user->skills()->detach();
+        foreach ($skills as $key => $skill) {
+            $skill_id = $skill->id;
+            $user->skills()->attach($skill_id);
+        }
+
+        return redirect()->route('home');
+    }
+
+    /*---------------------------
+            HELPERS
+            ---------------------*/
+
+    //get array of each index with a fake json string into a true json array
+    private function requestedSkillsToJson($input) {
+        $tags = [];
+        foreach ($input as $key => $skill) {
+            array_push($tags, json_decode($skill));
+        }
+        return $tags;
+    }
+
+    //return a string of name from json array
+    private function skillsName($input) {
+        $skills_name_array = [];
+        foreach ($input as $key => $skill) {
+            array_push($skills_name_array, $skill->name);
+        }
+        return implode(", ", $skills_name_array);
+    }
+
+    //add new skill if it doesnt exist in database
+    private function addNewSkills($input) {
+        foreach ($input as $key => $skill) {
+            if($skill->id == '') {
+                $add_skill = new Skill();
+                $add_skill->name = $skill->name;
+                $add_skill->save();
+                $input[$key]->id = $add_skill->id;
+            }
+        }
+
+        return $input;
+    }
+
+    //get language encoded json
+    private function getLanguageLevels($english, $french, $arabic) {
+        $languages = [
+            'english' => $english,
+            'french' => $french,
+            'arabic' => $arabic,
+        ];
+
+        return json_encode($languages);
+    }
+
+
 }

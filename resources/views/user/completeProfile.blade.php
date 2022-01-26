@@ -106,7 +106,7 @@ Maison d'entrepreneuriat
                                 <input v-model='user.language.french' name="level_french" type="range" class="form-range" value="0" min="0" max="2" id="customRange2">
                             </div>
                         </div>
-
+                        <!-- :only-existing-tags="true" -->
                         <div class="col-lg-12 form-group">
                             <label for="">my Skills</label>
                             <tags-input name="skills" element-id="tags"
@@ -114,7 +114,7 @@ Maison d'entrepreneuriat
                                 placeholder="Add a skill"
                                 :typeahead="true"
                                 :typeahead-hide-discard="true"
-                                :only-existing-tags="true"
+
                                 :existing-tags="existingTags"
                                 id-field="id"
                                 text-field="name">
