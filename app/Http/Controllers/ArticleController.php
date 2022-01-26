@@ -26,7 +26,7 @@ class ArticleController extends Controller
         $article->description = $request->description;
         $article->save();
 
-        return view('articles.add');
+        return redirect()->route('home');
     }
 
 

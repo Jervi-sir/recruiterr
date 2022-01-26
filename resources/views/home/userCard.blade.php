@@ -6,7 +6,7 @@
             </div>
             <div class="profile-img">
                 <a href="#">
-                    <img src="media/figure/author_1.jpg" alt="author">
+                    <img src="{{ Auth()->user()->profile->profile_pic ? Auth()->user()->profile->profile_pic : 'media/figure/author_1.jpg' }}" alt="Chat">
                 </a>
             </div>
             <div class="profile-name">

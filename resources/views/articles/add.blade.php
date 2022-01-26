@@ -30,7 +30,6 @@ Maison d'entrepreneuriat
                                 <label for="add-image">Add an Image</label>
                                 <input id="add-image" type="file" class="form-control" accept="image/*" name="image" @change="previewFiles" required hidden>
                                 <div class="preview">
-                                    <span class="details">@{{ imageDetails }}</span>
                                     <img class="preview" :src="image" alt="">
                                 </div>
                             </div>

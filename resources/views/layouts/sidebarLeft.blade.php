@@ -22,7 +22,7 @@
     <div class="fixed-sidebar-left large-sidebar">
         <div class="sidebar-toggle">
             <div class="sidebar-logo">
-                <a href="index-2.html"><img src="media/logo2.png" alt="Logo"></a>
+                <a href="{{ route('home') }}"><img src="media/logo2.png" alt="Logo"></a>
             </div>
             <button class="toggle-btn toggler-close">
                 <span></span>
