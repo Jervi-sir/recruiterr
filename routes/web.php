@@ -26,7 +26,8 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 
 Route::get('/', function () {
-    return view('getin');
+    return redirect()->route('login');
+    //return view('getin');
     //return view('welcome');
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
