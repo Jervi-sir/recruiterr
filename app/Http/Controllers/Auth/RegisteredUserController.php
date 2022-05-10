@@ -36,6 +36,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         if(User::where('email', $request->email)->count()) {
             return view('alreadyRegistered');
         }
@@ -50,15 +51,18 @@ class RegisteredUserController extends Controller
 
         $phone = $request->phone;
 
-        if(substr($phone, 0, 1) != '0' ) {      //if doesnt start with 0
+        //if doesnt start with 0
+        if(substr($phone, 0, 1) != '0' ) {
             $phone = '0' . $phone;
         }
 
-        if(strlen($phone) > 10) {        //if is more then 10
+        //if is more then 10
+        if(strlen($phone) > 10) {
             return back()->withInput()->withErrors(['phone' => 'Phone number is wrong']);
         }
 
-        if(User::where('mobile', $phone )->count()) {              //if does exist
+        //if exists already
+        if(User::where('mobile', $phone )->count()) {
             return back()->withInput()->withErrors(['phone' => 'Phone number already being in use']);
         }
 

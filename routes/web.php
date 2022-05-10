@@ -1,16 +1,12 @@
 <?php
 
-use GuzzleHttp\Psr7\Request;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
@@ -24,14 +20,17 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
-
 Route::get('/', function () {
     return redirect()->route('login');
-    //return view('getin');
-    //return view('welcome');
 });
+Route::get('/test', function() {
+    return view('auth.register');
+});
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('join', [SmsController::class, 'join'])->name('join');
+
+Route::get('/show&={id}', [ArticleController::class, 'show'])->name('article.show');
 
 Route::get('/newsfeed', [HomeController::class, 'newsfeed'])->name('newsfeed');
 Route::get('/groups', [HomeController::class, 'groups'])->name('groups');
@@ -46,14 +45,15 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/myProfile', [ProfileController::class, 'myProfile'])->name('profile.mine');
     Route::get('/editProfile', [ProfileController::class, 'editMyProfile'])->name('profile.editMine');
     Route::post('/editProfile', [ProfileController::class, 'updateMyProfile'])->name('profile.update');
-
-    Route::get('/add-article', [ArticleController::class, 'addPost'])->name('article.add');
-    Route::post('/add-article', [ArticleController::class, 'publishPost'])->name('article.publish');
-
 });
 
 
 Route::middleware(['auth', 'admin'])->group(function() {
+    Route::get('/create-article', [ArticleController::class, 'addPost'])->name('article.create');
+    Route::post('/add-article', [ArticleController::class, 'publishPost'])->name('article.publish');
+    Route::get('/edit-article&={id}', [ArticleController::class, 'editPost'])->name('article.edit');
+    Route::post('/update-article&={id}', [ArticleController::class, 'updatePost'])->name('article.update');
+
     Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
     Route::get('/admin/list', [AdminController::class, 'adminList'])->name('admin.list');
 

@@ -28,12 +28,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        dd($request);
         $request->authenticate();
 
         $request->session()->regenerate();
 
         $user = Auth()->user();
-        $role = $user->role()->first()->id;
+        $role = $user->role->id;
+
+        //if he hasn't been verified yet
         if($user->isVerified == 0) {
             return redirect()->route('profile.complete');
         }
