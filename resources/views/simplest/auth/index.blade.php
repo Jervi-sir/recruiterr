@@ -93,7 +93,8 @@ footer {
 
 .menu-tab a {
     transform: rotate(180deg);
-    background: white;
+    background: #615dfa;
+    color: white;
     margin-bottom: 10px;
     padding: 25px 10px;
     border-radius: 12px;
@@ -102,8 +103,8 @@ footer {
 }
 
 .menu-tab a.active {
-    background: #615dfa;
-    color: white;
+    background: white;
+    color: #3e416d;
 }
 
 .body-tab {
@@ -160,6 +161,7 @@ footer a {
         width: 100%;
     }
     .tab {
+        min-width: unset;
         width: 100%;
         transform: translateX(0);
     }
@@ -183,7 +185,7 @@ footer a {
         flex: 1;
         transform: rotate(0);
         text-align: center;
-        border-bottom-right-radius: 0;
+        border-radius: 20px 20px 0 0;
     }
 }
 
