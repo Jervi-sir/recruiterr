@@ -14,7 +14,7 @@
                 <div class="dropdown-user-avatar">
                     <img src="simplest/images/avatars/avatar-1.jpg" alt="">
                 </div>
-                <div class="dropdown-user-name"> James Lewis </div>
+                <div class="dropdown-user-name"> {{ Auth()->user()->name }} </div>
             </div>
         </a>
         @endauth
@@ -28,19 +28,14 @@
 
         @auth
         <ul class="dropdown-user-menu">
-            <li><a href="#"> <i class="fas fa-user-cog"></i> Create Post</a></li>
-            <li><a href="#"> <i class="fas fa-user-cog"></i> Edit Profile</a></li>
-            <hr class="m-0">
+            @if (Auth()->user()->role->role_name == "admin" || Auth()->user()->role->role_name == "su")
             <li><a href="{{ route('article.create') }}"> <i class="fas fa-user-cog"></i> Create Post</a></li>
+            @endif
+            <li><a href="#"> <i class="fas fa-user-cog"></i> Edit Profile</a></li>
+
+            <hr class="m-0">
+            <li><a href="{{ route('article.create') }}"> <i class="fas fa-user-cog"></i> My Progress</a></li>
             <li><a href="#"> <i class="fas fa-user-cog"></i> Admin Area</a></li>
-            <li>
-                <a href="#" id="night-mode" class="btn-night-mode">
-                    <i class="fas fa-moon"></i> Night mode
-                    <span class="btn-night-mode-switch">
-                        <span class="uk-switch-button"></span>
-                    </span>
-                </a>
-            </li>
             </li>
             <li>
                 <a href="">

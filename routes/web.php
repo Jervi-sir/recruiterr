@@ -4,7 +4,7 @@ use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SmsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminClassicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -54,27 +54,27 @@ Route::middleware(['auth', 'admin'])->group(function() {
     Route::get('/edit-article&={id}', [ArticleController::class, 'editPost'])->name('article.edit');
     Route::post('/update-article&={id}', [ArticleController::class, 'updatePost'])->name('article.update');
 
-    Route::get('/admin/students', [AdminController::class, 'students'])->name('admin.students');
-    Route::get('/admin/list', [AdminController::class, 'adminList'])->name('admin.list');
+    Route::get('/admin/students', [AdminClassicController::class, 'students'])->name('admin.students');
+    Route::get('/admin/list', [AdminClassicController::class, 'adminList'])->name('admin.list');
 
-    Route::get('/admin/specialities', [AdminController::class, 'specialities'])->name('admin.specialities');
-    Route::get('/admin/skills', [AdminController::class, 'skills'])->name('admin.skills');
-    Route::get('/admin/badges', [AdminController::class, 'badges'])->name('admin.badges');
+    Route::get('/admin/specialities', [AdminClassicController::class, 'specialities'])->name('admin.specialities');
+    Route::get('/admin/skills', [AdminClassicController::class, 'skills'])->name('admin.skills');
+    Route::get('/admin/badges', [AdminClassicController::class, 'badges'])->name('admin.badges');
 
-    Route::get('/admin/specialities/add', [AdminController::class, 'specialitiesAdd'])->name('speciality.add');
-    Route::post('/admin/specialities/add', [AdminController::class, 'specialitiesSave'])->name('speciality.save');
-    Route::post('/admin/specialities/update', [AdminController::class, 'specialitiesUpdate'])->name('speciality.update');
-    Route::post('/admin/specialities/delete', [AdminController::class, 'specialitiesDelete'])->name('speciality.delete');
+    Route::get('/admin/specialities/add', [AdminClassicController::class, 'specialitiesAdd'])->name('speciality.add');
+    Route::post('/admin/specialities/add', [AdminClassicController::class, 'specialitiesSave'])->name('speciality.save');
+    Route::post('/admin/specialities/update', [AdminClassicController::class, 'specialitiesUpdate'])->name('speciality.update');
+    Route::post('/admin/specialities/delete', [AdminClassicController::class, 'specialitiesDelete'])->name('speciality.delete');
 
-    Route::get('/admin/skills/add', [AdminController::class, 'skillsAdd'])->name('skill.add');
-    Route::post('/admin/skills/add', [AdminController::class, 'skillsSave'])->name('skill.save');
-    Route::post('/admin/skills/update', [AdminController::class, 'skillsUpdate'])->name('skill.update');
-    Route::post('/admin/skills/delete', [AdminController::class, 'skillsDelete'])->name('skill.delete');
+    Route::get('/admin/skills/add', [AdminClassicController::class, 'skillsAdd'])->name('skill.add');
+    Route::post('/admin/skills/add', [AdminClassicController::class, 'skillsSave'])->name('skill.save');
+    Route::post('/admin/skills/update', [AdminClassicController::class, 'skillsUpdate'])->name('skill.update');
+    Route::post('/admin/skills/delete', [AdminClassicController::class, 'skillsDelete'])->name('skill.delete');
 
-    Route::get('/admin/badges/add', [AdminController::class, 'badgesAdd'])->name('badge.add');
-    Route::post('/admin/badges/add', [AdminController::class, 'badgesSave'])->name('badge.save');
-    Route::post('/admin/badges/update', [AdminController::class, 'badgesUpdate'])->name('badge.update');
-    Route::post('/admin/badges/delete', [AdminController::class, 'badgesDelete'])->name('badge.delete');
+    Route::get('/admin/badges/add', [AdminClassicController::class, 'badgesAdd'])->name('badge.add');
+    Route::post('/admin/badges/add', [AdminClassicController::class, 'badgesSave'])->name('badge.save');
+    Route::post('/admin/badges/update', [AdminClassicController::class, 'badgesUpdate'])->name('badge.update');
+    Route::post('/admin/badges/delete', [AdminClassicController::class, 'badgesDelete'])->name('badge.delete');
 });
 
 //Route::post('/success', [RegisterController::class, 'store'])->name('register');
