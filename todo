@@ -26,3 +26,15 @@
 [] do register social media
 [] user have a badges
 
+---- Template ----
+[x]  feed of articles
+[x]  add article
+[x]  show article
+[x]  edit article
+[x]  login page
+    [] add specialities
+
+[x]  signin page
+[]  complete Profile
+[]  edit profile
+
