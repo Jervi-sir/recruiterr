@@ -113,6 +113,7 @@ html body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background: #302ea1;
 }
 
 .wrapper{
