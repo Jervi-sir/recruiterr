@@ -6,9 +6,15 @@ Register
 
 @section('form-body')
 <h2>Join our Community</h2>
+@if($errors->any())
+    {{ implode('', $errors->all('message')) }}
+@endif
 <div class="line"></div>
 <form id="form" action="{{ route('register') }}" method="POST">
     @csrf
+    <div class="input">
+        <input class="uk-input" type="text" name="name" placeholder="Your Name">
+    </div>
     <div class="input">
         <input class="uk-input" type="text" name="email" placeholder="Your E-mail">
     </div>
@@ -32,7 +38,7 @@ Register
             </option>
         </select>
     </div>
-    <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"> Login </button>
+    <button type="submit" class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom"> Register </button>
 </form>
 @endsection
 
@@ -71,10 +77,10 @@ Register
         data: {
             phone: '',
             specialities: [
-                {'id': 1, 'name':'bruh'},
-                {'id': 2, 'name':'bruh1'},
-                {'id': 3, 'name':'bruh2'},
-                {'id': 4, 'name':'bruh3'},
+                {'id': 1, 'name':'speciality1'},
+                {'id': 2, 'name':'speciality2'},
+                {'id': 3, 'name':'speciality3'},
+                {'id': 4, 'name':'speciality4'},
             ],
         },
         methods: {

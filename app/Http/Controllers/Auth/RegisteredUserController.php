@@ -85,8 +85,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-        return redirect()->route('profile.complete');
+        //return redirect()->route('profile.complete');
 
-        //return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::HOME);
     }
 }
