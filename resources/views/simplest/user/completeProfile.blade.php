@@ -4,6 +4,10 @@
 Maison d'entrepreneuriat
 @endsection
 
+@section('styles-head')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@voerro/vue-tagsinput@2.7.1/dist/style.css">
+@endsection
+
 @section('body')
         <!-- Wrapper -->
         <div id="wrapper">
@@ -11,8 +15,9 @@ Maison d'entrepreneuriat
             @include('simplest.components.sidebar')
 
            <!-- contents -->
-           <div class="main_content">
+           <div class="main_content" id="formProfile">
                 <!-- header -->
+                @include('simplest.components.header')
 
                 <div class="main_content_inner">
                     <div uk-grid>
@@ -20,16 +25,34 @@ Maison d'entrepreneuriat
                             <!-- Stories -->
                             <!-- Create new post -->
                             <!-- Post -->
-                            <div class="container">
+                            <div class="container"  >
                                 <!-- Banner Area Start -->
-                                <div class="newsfeed-banner">
+                                <div class="newsfeed-banner uk-flex uk-flex-center">
                                     <img src="media/banner/logo-words.png" alt="">
                                 </div>
 
                                 <div class="newsfeed-search">
-                                    @include('user.stepsLeft')
+                                    <div class="container">
+                                        <section class="step-indicator">
+                                            <div class="step step1 completed">
+                                                <div class="step-icon"><i class="icofont-checkdo"></i></div>
+                                              <p><span>joined</span></p>
+                                            </div>
+                                          <div class="indicator-line completed"></div>
+                                          <div class="step step2 active">
+                                              <div class="step-icon active">2</div>
+                                            <p><span>Complete</span><span>your profile</span></p>
+                                          </div>
+                                          <div class="indicator-line"></div>
+                                          <div class="step step3">
+                                              <div class="step-icon">3</div>
+                                            <p>Confirmation</p>
+                                          </div>
+                                        </section>
+                                    </div>
+
                                 </div>
-                                <div class="row" id="formProfile" >
+                                <div class="row" >
                                     <div class="col-lg-8">
                                         <div class="block-box">
                                             <h3 class="item-title">Complete my profile</h3>
@@ -41,7 +64,7 @@ Maison d'entrepreneuriat
 
                                                         <div class="file-btn">
                                                             <label for="select-image">Change Image</label>
-                                                            <input id="select-image" type="file" class="form-control" accept="image/*" name="image" @change="previewFiles" required hidden>
+                                                            <input id="select-image" type="file" class="uk-input" accept="image/*" name="image" @change="previewFiles" required hidden>
                                                             <div class="preview">
                                                                 <span class="details">@{{ imageDetails }}</span>
                                                                 <img class="preview" :src="image" alt="">
@@ -53,14 +76,14 @@ Maison d'entrepreneuriat
                                                         <label for="">
                                                             <span>First Name</span>
                                                             <div class="annotation" title="first name"> ? </div></label>
-                                                        <input v-model='user.familyName' type="text" class="form-control" name="first_name" placeholder="Enter your First Name" required>
+                                                        <input v-model='user.familyName' type="text" class="uk-input" name="first_name" placeholder="Enter your First Name" required>
                                                     </div>
                                                     <div class="col-lg-6 form-group">
                                                         <label for="">
                                                             <span>Last Name</span>
                                                             <div class="annotation" title="first name"> ? </div></label>
                                                         </label>
-                                                        <input v-model='user.firstName' type="text" class="form-control" name="last_name" placeholder="Enter your Last Name" required>
+                                                        <input v-model='user.firstName' type="text" class="uk-input" name="last_name" placeholder="Enter your Last Name" required>
                                                     </div>
 
                                                     <div class="col-lg-6 form-group">
@@ -68,17 +91,17 @@ Maison d'entrepreneuriat
                                                             <span>Email</span>
                                                             <div class="annotation" title="first name"> ? </div></label>
                                                         </label>
-                                                        <input v-model='user.email' type="email" class="form-control" placeholder="E-mail" disabled>
+                                                        <input v-model='user.email' type="email" class="uk-input" placeholder="E-mail" disabled>
                                                     </div>
 
                                                     <div class="col-lg-6 form-group">
                                                         <label for="">Phone number</label>
-                                                        <input v-model='user.phone' type="text" class="form-control" name="phone_number" placeholder="Phone" required>
+                                                        <input v-model='user.phone' type="text" class="uk-input" name="phone_number" placeholder="Phone" required>
                                                     </div>
 
                                                     <div class="col-lg-6 form-group">
                                                         <label for="">Birthdate</label>
-                                                        <input v-model='user.birthdate' type="date" class="form-control" name="birth_date" placeholder="E-mail" required>
+                                                        <input v-model='user.birthdate' type="date" class="uk-input" name="birth_date" placeholder="E-mail" required>
                                                     </div>
 
                                                     <div class="col-lg-6 form-group">
@@ -86,12 +109,12 @@ Maison d'entrepreneuriat
 
                                                     <div class="col-lg-6 form-group">
                                                         <label for="">Grade</label>
-                                                        <input v-model='user.grade' type="text" class="form-control" name="student_code" placeholder="Code" >
+                                                        <input v-model='user.grade' type="text" class="uk-input" name="student_code" placeholder="Code" >
                                                     </div>
 
                                                     <div class="col-lg-6 form-group">
                                                         <label for="">Student Code</label>
-                                                        <input v-model='user.code' type="text" class="form-control" name="student_code" placeholder="Code">
+                                                        <input v-model='user.code' type="text" class="uk-input" name="student_code" placeholder="Code">
                                                     </div>
 
                                                     <div class="line-separator"></div>
@@ -158,118 +181,113 @@ Maison d'entrepreneuriat
                                                     </div>
                                                     -->
                                                     <div class="col-lg-12 form-group radioBox">
-                                                        <label for="">Do u need help from Entp</label>
+                                                        <label for="">Do you need help from Entp</label>
                                                         <div class="box-choise">
                                                             <div class="choise">
-                                                                <input id="help-yes" name="entp_help" value="yes" type="radio" class="form-control" aria-label="yes">
+                                                                <input id="help-yes" name="entp_help" value="yes" type="radio" class=".uk-radio" aria-label="yes">
                                                                 <label for="help-yes">Yes</label>
                                                             </div>
                                                             <div class="choise">
-                                                                <input id="help-no" name="entp_help" value="no" type="radio" class="form-control" aria-label="no">
+                                                                <input id="help-no" name="entp_help" value="no" type="radio" class=".uk-radio" aria-label="no">
                                                                 <label for="help-no">No</label>
                                                             </div>
                                                             <div class="choise">
-                                                                <input id="help-probably" name="entp_help" value="probably" type="radio" class="form-control" aria-label="probably">
+                                                                <input id="help-probably" name="entp_help" value="probably" type="radio" class=".uk-radio" aria-label="probably">
                                                                 <label for="help-probably">Probably</label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 form-group">
                                                         <label for="">Bio</label>
-                                                        <textarea v-model='user.bio' name="bio" id="message" cols="30" rows="3" class="textarea form-control" placeholder="About Me and My Goals"></textarea>
+                                                        <textarea v-model='user.bio' name="bio" id="message" cols="30" rows="3" class="textarea uk-textarea" placeholder="About Me and My Goals"></textarea>
                                                     </div>
                                                     <div class="col-12 form-group submit-internal">
-                                                        <input id="submit-btn" type="submit" class="submit-btn" value="Update My Profile">
+                                                        <input id="submit-btn" type="submit" class="uk-button uk-button-primary" value="Update My Profile">
                                                     </div>
                                                 </div>
                                                 <div class="form-response"></div>
                                             </form>
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="block-box user-preview">
-                                            <h3 class="item-title">preview</h3>
-                                            <div class="user-image">
-                                                <img :src="image" alt="">
-                                            </div>
-                                            <h6>Details</h6>
-                                            <div class="user-names">
-                                                @{{ user.familyName }}<br> @{{ user.firstName }}
-                                            </div>
-                                            <div class="user-code">
-                                                @{{ user.code }}
-                                            </div>
-                                            <div class="user-birthdate">
-                                                @{{ user.birthdate }}
-                                            </div>
-                                            <div class="user-email">
-                                                @{{ user.email }}
-                                            </div>
-                                            <div class="user-phone">
-                                                @{{ user.phone }}
-                                            </div>
-                                            <div class="user-grade">
-                                                @{{ selectedSpeciality }}
-                                            </div>
-
-                                            <h6>Language</h6>
-                                            <div class="user-languages">
-                                                <div class="lang-container">
-                                                    <div class="lang-choice">
-                                                        Arabic
-                                                    </div>
-                                                    <div class="lang-level">
-                                                        <span class="normal" v-show="user.language.arabic == 0">Normal</span>
-                                                        <span class="medium" v-show="user.language.arabic == 1">Medium</span>
-                                                        <span class="expert" v-show="user.language.arabic == 2">Expert</span>
-                                                    </div>
-                                                </div>
-                                                <div class="lang-container">
-                                                    <div class="lang-choice">
-                                                        English
-                                                    </div>
-                                                    <div class="lang-level">
-                                                        <span class="normal" v-show="user.language.english == 0">Normal</span>
-                                                        <span class="medium" v-show="user.language.english == 1">Medium</span>
-                                                        <span class="expert" v-show="user.language.english == 2">Expert</span>
-                                                    </div>
-                                                </div>
-                                                <div class="lang-container">
-                                                    <div class="lang-choice">
-                                                        French
-                                                    </div>
-                                                    <div class="lang-level">
-                                                        <span class="normal" v-show="user.language.french == 0">Normal</span>
-                                                        <span class="medium" v-show="user.language.french == 1">Medium</span>
-                                                        <span class="expert" v-show="user.language.french == 2">Expert</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="user-bio">
-                                                @{{ user.bio }}
-                                            </div>
-
-                                            <h6>Skills</h6>
-                                            <div class="user-skills">
-                                                <span v-for="(item, index) in selectedTags" class="tags-input-badge tags-input-badge-pill tags-input-badge-selected-default">
-                                                    @{{item.name}}
-                                                </span>
-                                            </div>
-                                            <div class="user-need-formation"></div>
-                                        </div>
-                                    </div>
-
                                     <div class="col-lg-4 form-group submit-external">
-                                        <input type="submit" class="submit-btn" value="Update My Profile" @click="submit">
+                                        <input type="submit" class="uk-button uk-button-primary" value="Update My Profile" @click="submit">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- rightSideBar -->
                         <div class="uk-width-expand">
+                            <div class="block-box user-preview">
+                                <h3 class="item-title">preview</h3>
+                                <div class="user-image">
+                                    <img :src="image" alt="">
+                                </div>
+                                <h6>Details</h6>
+                                <div class="user-names">
+                                    @{{ user.familyName }}<br> @{{ user.firstName }}
+                                </div>
+                                <div class="user-code">
+                                    @{{ user.code }}
+                                </div>
+                                <div class="user-birthdate">
+                                    @{{ user.birthdate }}
+                                </div>
+                                <div class="user-email">
+                                    @{{ user.email }}
+                                </div>
+                                <div class="user-phone">
+                                    @{{ user.phone }}
+                                </div>
+                                <div class="user-grade">
+                                    @{{ selectedSpeciality }}
+                                </div>
 
+                                <h6>Language</h6>
+                                <div class="user-languages">
+                                    <div class="lang-container">
+                                        <div class="lang-choice">
+                                            Arabic
+                                        </div>
+                                        <div class="lang-level">
+                                            <span class="normal" v-show="user.language.arabic == 0">Normal</span>
+                                            <span class="medium" v-show="user.language.arabic == 1">Medium</span>
+                                            <span class="expert" v-show="user.language.arabic == 2">Expert</span>
+                                        </div>
+                                    </div>
+                                    <div class="lang-container">
+                                        <div class="lang-choice">
+                                            English
+                                        </div>
+                                        <div class="lang-level">
+                                            <span class="normal" v-show="user.language.english == 0">Normal</span>
+                                            <span class="medium" v-show="user.language.english == 1">Medium</span>
+                                            <span class="expert" v-show="user.language.english == 2">Expert</span>
+                                        </div>
+                                    </div>
+                                    <div class="lang-container">
+                                        <div class="lang-choice">
+                                            French
+                                        </div>
+                                        <div class="lang-level">
+                                            <span class="normal" v-show="user.language.french == 0">Normal</span>
+                                            <span class="medium" v-show="user.language.french == 1">Medium</span>
+                                            <span class="expert" v-show="user.language.french == 2">Expert</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="user-bio">
+                                    @{{ user.bio }}
+                                </div>
+
+                                <h6>Skills</h6>
+                                <div class="user-skills">
+                                    <span v-for="(item, index) in selectedTags" class="tags-input-badge tags-input-badge-pill tags-input-badge-selected-default">
+                                        @{{item.name}}
+                                    </span>
+                                </div>
+                                <div class="user-need-formation"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -413,9 +431,13 @@ Maison d'entrepreneuriat
     }
     .user-image {
         width: 80px;
+        height: 80px;
         border-radius: 100%;
         overflow: hidden;
         margin: auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
     .user-image img {
         width: 100%
@@ -515,12 +537,125 @@ Maison d'entrepreneuriat
         .submit-external {
             display: unset;
             text-align: center;
+            padding: 0 2rem;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
         }
         .form-group .submit-btn {
             width: 100%;
         }
+
+        .uk-button-primary  {
+            width: 100%;
+        }
+
+        .level-input {
+            width: 100%;
+        }
     }
 
+
+
+
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  margin-top: 1rem;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.step-indicator .step-icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: #c2c2c2;
+  font-size: 10px;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.step.active .step-icon {
+  background: crimson;
+}
+
+.step.completed .step-icon {
+  background: rgb(25, 205, 23);
+}
+
+.step p span:nth-of-type(2) {
+    line-height: 0;
+}
+
+.step p {
+
+}
+
+.step p {
+  text-align: center;
+  /*position: absolute;*/
+  bottom: -40px;
+  color: #c2c2c2;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.step.active p {
+  color: crimson;
+}
+
+.step.completed p {
+  color: rgb(25, 205, 23);
+}
+
+.step.step2 p,
+.step.step3 p {
+  left: 50%;
+  /*transform: translateX(-50%);*/
+}
+
+.indicator-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(220,20,60,1) 26%, rgba(220,20,60,0.7331786542923434) 37%, rgba(194,194,194,1) 50%);
+  flex: 1;
+  transform: translateY(-1.1rem);
+}
+
+.indicator-line.active {
+  background: crimson;
+}
+
+.indicator-line.completed {
+  background: rgb(25, 205, 23);
+}
+
+
+.textarea  {
+    resize: vertical;
+}
+
+
+@media screen and (max-width: 500px) {
+  .step p {
+    font-size: 11px;
+    bottom: -20px;
+  }
+}
 </style>
 
 @endsection
