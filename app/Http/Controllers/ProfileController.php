@@ -53,7 +53,7 @@ class ProfileController extends Controller
 
         //$data_obj = (object)$data['specialities'];
 
-        return view('user.completeProfile', ['skills' => json_encode($data['skills']),
+        return view('simplest.user.completeProfile', ['skills' => json_encode($data['skills']),
                                      'specialities' => json_encode($data['specialities']),
                                      'profile' => json_encode($data['profile'])
                                     ]);
