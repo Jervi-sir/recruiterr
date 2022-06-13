@@ -36,7 +36,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         if(User::where('email', $request->email)->count()) {
             return view('alreadyRegistered');
         }
