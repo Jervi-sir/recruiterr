@@ -202,7 +202,7 @@ Maison d'entrepreneuriat
                                                         <textarea v-model='user.bio' name="bio" id="message" cols="30" rows="3" class="textarea uk-textarea" placeholder="About Me and My Goals"></textarea>
                                                     </div>
                                                     <div class="col-12 form-group submit-internal">
-                                                        <input id="submit-btn" type="submit" class="uk-button uk-button-primary" value="Update My Profile">
+                                                        <input id="submit-btn" type="submit" class="uk-button uk-button-primary" value="Complete My Profile">
                                                     </div>
                                                 </div>
                                                 <div class="form-response"></div>
@@ -210,7 +210,7 @@ Maison d'entrepreneuriat
                                         </div>
                                     </div>
                                     <div class="col-lg-4 form-group submit-external">
-                                        <input type="submit" class="uk-button uk-button-primary" value="Update My Profile" @click="submit">
+                                        <input type="submit" class="uk-button uk-button-primary" value="Complete My Profile" @click="submit">
                                     </div>
                                 </div>
                             </div>
