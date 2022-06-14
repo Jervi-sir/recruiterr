@@ -57,14 +57,15 @@ class RegisteredUserController extends Controller
 
         //if is more then 10
         if(strlen($phone) > 10) {
-            return back()->withInput()->withErrors(['phone' => 'Phone number is wrong']);
+            return back()->withInput()->withErrors(['phone' => 'Please enter Correct phone number']);
         }
 
+        /*
         //if exists already
         if(User::where('mobile', $phone )->count()) {
-            return back()->withInput()->withErrors(['phone' => 'Phone number already being in use']);
+            return back()->withInput()->withErrors(['phone' => 'Please enter Correct phone number']);
         }
-
+        */
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

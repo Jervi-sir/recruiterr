@@ -41,7 +41,6 @@ Route::get('/badges', [HomeController::class, 'badges'])->name('badges');
 Route::middleware(['auth'])->group(function() {
     Route::get('/completeProfile', [ProfileController::class, 'completeProfile'])->name('profile.complete');
     Route::post('/completeProfile', [ProfileController::class, 'finishCompleteProfile'])->name('profile.completeUpdate');
-
     Route::get('/myProfile', [ProfileController::class, 'myProfile'])->name('profile.mine');
     Route::get('/editProfile', [ProfileController::class, 'editMyProfile'])->name('profile.editMine');
     Route::post('/editProfile', [ProfileController::class, 'updateMyProfile'])->name('profile.update');

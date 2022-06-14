@@ -6,8 +6,12 @@ Register
 
 @section('form-body')
 <h2>Join our Community</h2>
-@if($errors->any())
-    {{ implode('', $errors->all('message')) }}
+@if ($errors->any())
+    <div class="uk-alert uk-alert-danger">
+        @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach
+    </div>
 @endif
 <div class="line"></div>
 <form id="form" action="{{ route('register') }}" method="POST">

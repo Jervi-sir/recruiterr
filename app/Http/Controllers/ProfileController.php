@@ -195,7 +195,8 @@ class ProfileController extends Controller
     public function finishCompleteProfile(Request $request)
     {
 
-        $uploadedFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [ "quality" => "50"])->getSecurePath();
+        $uploadedFileUrl = '';
+        //$uploadedFileUrl = Cloudinary::upload($request->file('image')->getRealPath(), [ "quality" => "50"])->getSecurePath();
 
         //Tags to json array
         $skills = $this->requestedSkillsToJson($request->tags);
